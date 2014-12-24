@@ -10,5 +10,12 @@
   <%= @artist.description %>
 </p>
 
+<p>Releases:</p>
+<ul>
+  <% for release in @artist.releases %>
+    <li><%= link_to release.name, release_path(release.id) %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %>
