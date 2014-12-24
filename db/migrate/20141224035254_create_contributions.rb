@@ -1,8 +1,8 @@
 class CreateContributions < ActiveRecord::Migration
   def change
     create_table :contributions do |t|
-      t.references :artist_id, index: true
-      t.references :release_id, index: true
+      t.references :artist, index: true
+      t.references :release, index: true
 
       t.timestamps null: false
     end
