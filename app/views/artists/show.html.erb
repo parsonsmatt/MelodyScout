@@ -13,8 +13,9 @@
 <p><strong>Releases:</strong></p>
 <ul>
   <% for release in @artist.releases %>
-    <li><%= link_to release.name, release_path(release.id) %></li>
+  <li><%= link_to release.name, release_path(release.id) %></li>
   <% end %>
+  <li><%= link_to 'Add Release', new_release_path %></li>
 </ul>
 
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
