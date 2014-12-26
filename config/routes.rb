@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/new'
+
+  root 'welcome#index'
+
+  get 'register' => 'users#new'  
 
   resources :releases
 
@@ -11,7 +14,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
