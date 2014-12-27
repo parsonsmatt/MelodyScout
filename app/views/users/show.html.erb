@@ -9,7 +9,7 @@
 <p>
   <strong>Follows:</strong>
   <ul>
-    <% @user.artists.each do |artist| %>
+    <% @user.following.each do |artist| %>
       <li><%= link_to artist.name, artist_path(artist) %></li>
     <% end %>
   </ul>

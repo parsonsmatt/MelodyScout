@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 8 }  
 
   has_many :follows
-  has_many :artists, through: :follows
+  has_many :following, through: :follows, source: :artist
 
   has_secure_password
 end
