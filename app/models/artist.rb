@@ -12,10 +12,10 @@ class Artist < ActiveRecord::Base
   has_many :members, through: :member_relations
 
   # Bands:
-  has_many :bands_relations,  class_name: "Membership",
-                              foreign_key: "member_id",
-                              dependent: :destroy
-  has_many :bands, through: :bands_relations
+  has_many :band_relations,  class_name: "Membership",
+                             foreign_key: "member_id",
+                             dependent: :destroy
+  has_many :bands, through: :band_relations
 
   def add_member(other_artist)
     member_relations.create(member_id: other_artist.id)
