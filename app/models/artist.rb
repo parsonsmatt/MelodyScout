@@ -17,6 +17,10 @@ class Artist < ActiveRecord::Base
                              dependent: :destroy
   has_many :bands, through: :band_relations
 
+  # Followers:
+  has_many :follows
+  has_many :followers, through: :follows, source: :user
+
   def add_member(other_artist)
     member_relations.create(member_id: other_artist.try(:id))
   end
