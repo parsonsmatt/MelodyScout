@@ -18,7 +18,7 @@ class Artist < ActiveRecord::Base
   has_many :bands, through: :bands_relations
 
   def add_member(other_artist)
-    members.create(artist_id: other_artist.id)
+    member_relations.create(member_id: other_artist.id)
   end
 
   def add_release(release)
