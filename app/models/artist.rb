@@ -22,6 +22,6 @@ class Artist < ActiveRecord::Base
   end
 
   def add_release(release)
-    releases.create(release_id: release.id)
+    contributions.create(release_id: release.id)
   end
 end
