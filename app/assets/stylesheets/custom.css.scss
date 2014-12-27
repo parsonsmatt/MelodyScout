@@ -70,4 +70,31 @@ p {
   line-height: 1.7em;
 }
 
+/* Forms */
 
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+/* Errors */
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form_control {
+    color: $state-danger-text;
+  }
+}
