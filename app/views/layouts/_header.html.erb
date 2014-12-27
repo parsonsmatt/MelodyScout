@@ -1,7 +1,15 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">  
-    <%= link_to "TellMe", '#', id: "logo" %>
-    <nav>
+  <div class="container-fluid">
+    <!-- Stuff that shows when collapsed: -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tm_navbar_collapse">
+        <span class="sr-only">Toggle Navigation</span>
+        <% 3.times do %><span class="icon-bar"></span><% end %>
+      </button>
+      <%= link_to "TellMe", '#', class: "navbar-brand" %>
+    </div>
+    <!-- Stuff that collapses: -->
+    <nav class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Home', '/' %></li>
         <li><%= link_to 'Artists', artists_path %></li>
