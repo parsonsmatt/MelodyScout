@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   has_many :following, through: :follows, source: :artist
 
   has_secure_password
+
+  def follow_artist(artist)
+    follows.create(artist_id: artist.id)
+  end
 end
