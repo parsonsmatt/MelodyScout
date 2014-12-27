@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :artist %>
-    <%= f.select :artist_id, Artist.all.collect {|a| [a.name, a.id]} %>
+    <%= f.select :artist, Artist.all.collect {|a| [a.name, a.id]} %>
   </div>
   <div class="field">
     <%= f.label :release %>
-    <%= f.select :release_id, Release.all.collect {|r| [r.name, r.id]} %>
+    <%= f.select :release, Release.all.collect {|r| [r.name, r.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>
