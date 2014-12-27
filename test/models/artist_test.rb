@@ -10,6 +10,10 @@ class ArtistTest < ActiveSupport::TestCase
     @artist.name = ""
     assert_not @artist.valid?
   end
+
+  test "member access" do
+    @artist.members.create
+  end
   
   test "can add member" do
     member = Artist.create(name: "test member")

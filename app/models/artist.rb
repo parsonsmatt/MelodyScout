@@ -6,14 +6,19 @@ class Artist < ActiveRecord::Base
   has_many :releases, through: :contributions
 
   # Members:
-  has_many :memberships
-  has_many :members, through: :memberships
-  
+  has_many :member_relations, class_name: "Membership", 
+                              foreign_key: "band_id",
+                              dependent: :destroy
+  has_many :members, through: :member_relations
+
   # Bands:
-  has_many :bands, through: :memberships
+  has_many :bands_relations,  class_name: "Membership",
+                              foreign_key: "member_id",
+                              dependent: :destroy
+  has_many :bands, through: :bands_relations
 
   def add_member(other_artist)
-    members.create(member_id: other_artist.id)
+    members.create(artist_id: other_artist.id)
   end
 
   def add_release(release)
