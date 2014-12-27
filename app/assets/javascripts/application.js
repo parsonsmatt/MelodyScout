@@ -15,6 +15,4 @@
 //= require jquery_ujs
 //= require bootstrap/dropdown
 //= require_tree .
-//= require bootstrap/transition
-//= require bootstrap/collapse
 //= require turbolinks
