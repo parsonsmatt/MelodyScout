@@ -7,5 +7,8 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 8 }  
 
+  has_many :follows
+  has_many :artists, through: :follows
+
   has_secure_password
 end

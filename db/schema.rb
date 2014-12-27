@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226180218) do
+ActiveRecord::Schema.define(version: 20141227203254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20141226180218) do
 
   add_index "contributions", ["artist_id"], name: "index_contributions_on_artist_id", using: :btree
   add_index "contributions", ["release_id"], name: "index_contributions_on_release_id", using: :btree
+
+  create_table "follows", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "artist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "follows", ["artist_id"], name: "index_follows_on_artist_id", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "memberships", force: true do |t|
     t.integer  "band_id"
@@ -72,4 +82,6 @@ ActiveRecord::Schema.define(version: 20141226180218) do
 
   add_foreign_key "contributions", "artists"
   add_foreign_key "contributions", "releases"
+  add_foreign_key "follows", "artists"
+  add_foreign_key "follows", "users"
 end
