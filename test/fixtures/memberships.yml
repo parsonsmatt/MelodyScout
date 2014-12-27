@@ -2,8 +2,8 @@
 
 one:
   band_id: 1
-  member_id: 1
+  member_id: 4
 
 two:
-  band_id: 1
+  band_id: 2
   member_id: 1
