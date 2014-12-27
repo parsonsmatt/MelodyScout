@@ -10,12 +10,34 @@
   <%= @artist.description %>
 </p>
 
-<p><strong>Releases:</strong></p>
-<ul>
+<p>
+  <strong>Releases:</strong>
+  <ul>
   <% for release in @artist.releases %>
-  <li><%= link_to release.name, release_path(release.id) %></li>
+    <li><%= link_to release.name, release_path(release.id) %></li>
   <% end %>
-</ul>
+  </ul>
+</p>
+
+<% if @artist.members.count > 0 %>
+  <p>
+    <strong>Members:</strong>
+    <ul>
+    <% for member in @artist.members %>
+      <li><%= link_to member.name, artist_path(member) %></li>
+    <% end %>
+    </ul>
+  </p>
+<% elsif @artist.bands.count > 0 %>
+  <p>
+    <strong>Bands:</strong>
+    <ul>
+    <% for band in @artist.bands %>
+      <li><%= link_to band.name, artist_path(band) %></li>
+    <% end %>
+    </ul>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Back', artists_path %>
