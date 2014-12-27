@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'register' => 'users#new'  
 
   resources :releases
-
+  resources :users
   resources :artists
 
   resources :contributions
