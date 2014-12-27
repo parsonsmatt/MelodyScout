@@ -1,1 +1,16 @@
-<%= @user.name %>, <%= @user.email %>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<p>
+  <strong>Follows:</strong>
+  <ul>
+    <% @user.follows.each do |artist| %>
+      <li><%= link_to artist.name, artist_path(artist) %></li>
+    <% end %>
+  </ul>
+</p>
