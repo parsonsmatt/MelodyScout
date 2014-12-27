@@ -11,9 +11,9 @@ class ReleaseTest < ActiveSupport::TestCase
     assert_not @release.valid?
   end
 
-  test "can create new artist" do
-    old_count = @release.artists.count
-    @release.artists.create(name: "test")
-    assert_equal old_count+1, @release.artists.count
+  test "can add artist" do
+    artist = Artist.create(name: "test")
+    @release.add_artist(artist)
+    assert @release.artists.include?(artist)
   end
 end
