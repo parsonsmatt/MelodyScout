@@ -23,11 +23,12 @@ class ArtistMembershipRelationshipTest < ActionDispatch::IntegrationTest
 
   test "can't be both member/band at same time" do
     @a1.add_member(@a2)
-    assert_not @a2.add_member(@a1)
+    @a2.add_member(@a1)
+    assert_not @a1.bands.include?(@a2)
   end
 
   test "can't be member or band of self" do
-    assert_not @a1.add_member(@a1)
-    assert_not @a1.add_band(@a1)
+    assert_not @a1.add_member(@a1).valid?
+    assert_not @a1.add_band(@a1).valid?
   end
 end

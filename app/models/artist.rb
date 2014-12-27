@@ -24,7 +24,7 @@ class Artist < ActiveRecord::Base
   def add_member(other_artist)
     member_relations.create(member_id: other_artist.try(:id))
   end
-
+  
   def add_band(band)
     band_relations.create(band_id: band.try(:id))
   end
