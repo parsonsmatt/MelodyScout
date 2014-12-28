@@ -1,16 +1,21 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Follows:</strong>
-  <ul>
-    <% @user.following.each do |artist| %>
-      <li><%= link_to artist.name, artist_path(artist) %></li>
-    <% end %>
-  </ul>
-</p>
+<div class="row">
+  <div class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for(@user) %>  
+        <%= @user.name %>
+      </h1>
+      <p><%= @user.email %></p>
+    </section>
+  </div>
+  <div class="col-md-4">
+    <p>
+      <strong>Follows:</strong>
+      <ul>
+        <% @user.following.each do |artist| %>
+          <li><%= link_to artist.name, artist_path(artist) %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+</div>
