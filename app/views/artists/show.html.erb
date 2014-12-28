@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'follow_form' %>
-
+<% if logged_in? %>
+  <%= render 'follow_form' %>
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @artist.name %>

@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow(artist)
-    follows.find_by(id: artist.id).destroy
+    follows.find_by(artist_id: artist.id).destroy
   end
 
   def following?(artist)
