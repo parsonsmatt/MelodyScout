@@ -12,7 +12,15 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  def follow_artist(artist)
+  def follow(artist)
     follows.create(artist_id: artist.id)
+  end
+
+  def unfollow(artist)
+    follows.find_by(id: artist.id).destroy
+  end
+
+  def following?(artist)
+    following.include?(artist)
   end
 end
