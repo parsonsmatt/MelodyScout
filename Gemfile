@@ -5,8 +5,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0.rc1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.17.1'
-# User BCrypt for encryption
-gem 'bcrypt', '3.1.7'
 # Use Bootstrap for styling
 gem 'bootstrap-sass', '~> 3.3.1'
 # Use SCSS for stylesheets
@@ -28,7 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -47,3 +45,13 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+  gem 'guard-minitest'
+end
+
+group :production do
+  gem 'unicorn', '4.8.3'
+  gem 'rails_12factor'
+end

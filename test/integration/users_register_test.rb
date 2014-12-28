@@ -17,7 +17,7 @@ class UsersRegisterTest < ActionDispatch::IntegrationTest
   test "registration sends to user page" do
     get register_path
     assert_difference 'User.count', 1 do 
-      post_via_redirect users_path, user: {  name: "test user", email: "test@example.com",
+      post_via_redirect users_path, user: {  name: "test user", email: "newtest@example.com",
                                              password: "qwerasdf", password_confirmation: "qwerasdf" }
     end
     assert_template 'users/show'
