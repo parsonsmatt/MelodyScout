@@ -1,1 +1,4 @@
-<p>Click to unfollow!</p>
+<%= form_for( current_user.following.find_by(artist_id: @artist.id),
+              html: { method: :delete }) do |f| %>
+  <%= f.submit "Unfollow", class="btn" %>
+<% end %>

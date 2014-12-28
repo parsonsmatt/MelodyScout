@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  get 'follows/create'
+
+  get 'follows/destroy'
+
   root 'welcome#index'
 
   get 'register' => 'users#new'  
