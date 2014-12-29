@@ -1,17 +1,10 @@
 Rails.application.routes.draw do
 
 
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
-
-  get 'follows/create'
-
-  get 'follows/destroy'
-
   root 'welcome#index'
-
   get 'register' => 'users#new'  
+  get 'follows/create'
+  get 'follows/destroy'
   
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -23,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :follows, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
