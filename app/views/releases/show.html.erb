@@ -23,15 +23,9 @@
       <strong>Description:</strong>
       <%= @release.description %>
     </p>
+    
+    <%= render 'artists' if @release.has_artists? %>
 
-    <p>
-      <strong>Artists:</strong>
-      <ul>
-        <% for artist in @release.artists %>
-          <li><%= link_to artist.name, artist_path(artist.id) %></li>
-        <% end %>
-      </ul>
-    </p>
   </div>
 </div>
 

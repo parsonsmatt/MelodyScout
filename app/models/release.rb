@@ -8,4 +8,8 @@ class Release < ActiveRecord::Base
   def add_artist(artist)
     contributions.create(artist_id: artist.try(:id))
   end
+
+  def has_artists?
+    artists.count > 0
+  end
 end
