@@ -3,9 +3,9 @@
 one:
   name: "test user"
   email: "test@example.com"
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= User.digest('password123') %>
 
 two:
   name: "test two"
   email: "test2@example.com"
-  password_digest: <%= User.digest('password') %>
+  password_digest: <%= User.digest('password123') %>

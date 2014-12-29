@@ -15,17 +15,20 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to TellMe!"
       redirect_to @user
+      log_in(@user)
     else
       render 'new'
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+  end
+
+  def update
+
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def destroy
