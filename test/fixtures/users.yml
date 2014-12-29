@@ -28,5 +28,5 @@ user_<%= n %>:
   email: <%= "user-#{n}@tellme.com" %>
   password_digest: <%= User.digest('password123') %>
   activated: true
-  activated: <%= Time.zone.now %>
+  activated_at: <%= Time.zone.now %>
 <% end %>
