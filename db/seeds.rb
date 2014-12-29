@@ -11,13 +11,15 @@ User.create!(name: "Matt Parsons",
              email: "parsonsmatt@gmail.com",
              password: "qwerasdf",
              password_confirmation: "qwerasdf",
+             activated: true,
+             activated_at: Time.zone.now,
              admin: true)
 
 99.times do |n|
   name = Faker::Name.name
   email = "user#{n+1}@#{Faker::Internet.domain_name}"
   pw = 'password123'
-  User.create!(name: name, email: email, password: pw, password_confirmation: pw)
+  User.create!(name: name, email: email, password: pw, password_confirmation: pw, activated: true, activated_at: Time.zone.now)
 end
 
 # Artist seeding:

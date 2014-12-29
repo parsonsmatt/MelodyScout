@@ -4,21 +4,29 @@ one:
   name: "test user"
   email: "test@example.com"
   password_digest: <%= User.digest('password123') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 two:
   name: "test two"
   email: "test2@example.com"
   password_digest: <%= User.digest('password123') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 matt:
   name: "Matt Parsons"
   email: "parsonsmatt@gmail.com"
   password_digest: <%= User.digest('password123') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
   name: <%= "User #{n}" %>
   email: <%= "user-#{n}@tellme.com" %>
   password_digest: <%= User.digest('password123') %>
+  activated: true
+  activated: <%= Time.zone.now %>
 <% end %>
