@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   # Static pages:
   root 'welcome#index'
 
-  # Full resources:
+  # Releases:
   resources :releases
-  resources :artists do
-    resources :memberships
-  end
   
-  # Memberships:
+  # Artists:
+  resources :artists do
+    resources :memberships, shallow: true
+  end
 
   # User resources:
   resources :users
