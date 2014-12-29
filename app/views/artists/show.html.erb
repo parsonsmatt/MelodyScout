@@ -1,46 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<% if logged_in? %>
-  <%= render 'follow_form' %>
-<% end %>
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-</p>
+<div class='row'>
+  <div class='col-md-3'>
+    <p>
+      (eventual picture)
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @artist.description %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @artist.name %>
+    </p>
 
-<p>
-  <strong>Releases:</strong>
-  <ul>
-  <% for release in @artist.releases %>
-    <li><%= link_to release.name, release_path(release.id) %></li>
-  <% end %>
-  </ul>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @artist.description %>
+    </p>
 
-<% if @artist.members.count > 0 %>
-  <p>
-    <strong>Members:</strong>
-    <ul>
-    <% for member in @artist.members %>
-      <li><%= link_to member.name, artist_path(member) %></li>
-    <% end %>
-    </ul>
-  </p>
-<% elsif @artist.bands.count > 0 %>
-  <p>
-    <strong>Bands:</strong>
-    <ul>
-    <% for band in @artist.bands %>
-      <li><%= link_to band.name, artist_path(band) %></li>
-    <% end %>
-    </ul>
-  </p>
-<% end %>
+    <p>
+      <strong>Followers:</strong>
+      <%= @artist.followers.count %>
+    </p>
+    <%= render 'follow_form' if logged_in? %>
+    <%= link_to 'Edit', edit_artist_path(@artist) %> |
+    <%= link_to 'Back', artists_path %>
+  </div>
+  <div class='col-md-6'>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+    <%= render 'releases' if @artist.has_releases? %>
+
+    <%= render 'members' if @artist.has_members? %>
+    
+    <%= render 'bands' if @artist.has_bands? %>
+
+  </div>
+</div>

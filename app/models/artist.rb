@@ -33,5 +33,17 @@ class Artist < ActiveRecord::Base
     contributions.create(release_id: release.try(:id))
   end
 
+  def has_members?
+    members.count > 0
+  end
+
+  def has_bands?
+    bands.count > 0
+  end
+
+  def has_releases?
+    releases.count > 0
+  end
+
   private
 end

@@ -1,0 +1,8 @@
+<p>
+  <strong>releases:</strong>
+  <ul>
+    <% @artist.releases.each do |release| %>
+      <li><%= link_to release.name, release_path(release) %></li>
+    <% end %>
+  </ul>
+</p>

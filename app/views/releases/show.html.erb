@@ -1,28 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @release.name %>
-</p>
+<div class='row'>
+  <div class='col-md-3'
+    <p>
+      (eventual picture)
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @release.description %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @release.name %>
+    </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @release.date %>
-</p>
+    <p>
+      <strong>Date:</strong>
+      <%= @release.date %>
+    </p>
+    
+    <%= link_to 'Edit', edit_release_path(@release) %>
+  </div>
+  <div class='col-md-6'>
+    <p>
+      <strong>Description:</strong>
+      <%= @release.description %>
+    </p>
 
-<p>
-  <strong>Artists:</strong>
-  <ul>
-    <% for artist in @release.artists %>
-      <li><%= link_to artist.name, artist_path(artist.id) %></li>
-    <% end %>
-  </ul>
-</p>
+    <p>
+      <strong>Artists:</strong>
+      <ul>
+        <% for artist in @release.artists %>
+          <li><%= link_to artist.name, artist_path(artist.id) %></li>
+        <% end %>
+      </ul>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_release_path(@release) %> |
-<%= link_to 'Back', releases_path %>
