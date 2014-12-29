@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
+  before_action :admin_only, only: [:destroy]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
   
   def new
@@ -25,7 +27,12 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    if @user.update_attributes(secure_params)
+      flash[:success] = "Update successful"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   def show
@@ -50,4 +57,20 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to root_url unless current_user? @user
+    end
+
+    def admin_only
+      redirect_to root_url unless current_user.admin?
+    end
 end

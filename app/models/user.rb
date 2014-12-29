@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, 
                     length: { maximum: 255 }, 
                     uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 8 }  
+  validates :password, length: { minimum: 8 }, allow_blank: true  
 
   # Relations:
   has_many :follows, dependent: :destroy
