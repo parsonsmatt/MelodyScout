@@ -4,5 +4,6 @@
     <% @artist.members.each do |member| %>
       <li><%= link_to member.name, artist_path(member) %></li>
     <% end %>
+    <li><%= link_to 'Add Member', '#' %></li>
   </ul>
 </p>
