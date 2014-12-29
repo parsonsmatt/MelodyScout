@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   # Full resources:
   resources :releases
-  resources :artists
+  resources :artists do
+    resources :memberships
+  end
   
   # Memberships:
-  resources :memberships
 
   # User resources:
   resources :users
