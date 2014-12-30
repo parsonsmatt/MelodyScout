@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :memberships, shallow: true
   end
 
+ # resources :memberships
+
   # User resources:
   resources :users
   resources :follows, only: [:create, :destroy]

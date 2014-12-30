@@ -22,7 +22,8 @@ class Artist < ActiveRecord::Base
   has_many :followers, through: :follows, source: :user
 
   def add_member(other_artist)
-    member_relations.create(member_id: other_artist.try(:id))
+    a=Membership.new(band: self, member: other_artist)
+    a.save if a.valid?
   end
   
   def add_band(band)

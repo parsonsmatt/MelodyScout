@@ -2,7 +2,7 @@
 
 <p>Expose only one of the forms?</p>
 <% if @artist.band? %>
-  <%= form_for(@artist.member_relations.build) do |f| %>
+  <%= form_for(@artist.member_relations.build, url: :artist_memberships) do |f| %>
     <div><%= hidden_field_tag :band_id, @artist.id %></div>
     <%= f.select :member_id, Artist.where(individual: true).collect {|a| [a.name, a.id]} %>
     <%= f.submit "Submit", class: "btn btn-primary" %>

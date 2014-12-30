@@ -14,7 +14,7 @@ class Membership < ActiveRecord::Base
   end
 
   def cannot_symmetric_relation
-    if Membership.where(band: member, member: band).count > 0
+    if Membership.where(band: member, member: band).any?
       errors.add(:band, " can't relate symmetrically.")
     end
   end
