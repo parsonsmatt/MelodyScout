@@ -7,4 +7,10 @@
     <%= f.select :member_id, Artist.where(individual: true).collect {|a| [a.name, a.id]} %>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
+<% else %>
+  <%= form_for(@artist.band_relations.build, url: :artist_memberships) do |f| %>
+    <div><%= hidden_field_tag :member_id, @artist.id %></div>
+    <%= f.select :member_id, Artist.where(individual: false).collect {|a| [a.name, a.id]} %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
 <% end %>
