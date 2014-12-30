@@ -6,6 +6,8 @@ class Membership < ActiveRecord::Base
   validates :member, presence: true
 
   validate :cannot_relate_to_self, :cannot_symmetric_relation
+  validates :band, uniqueness: { scope: :member }
+  validates :member, uniqueness: { scope: :band }
 
   def cannot_relate_to_self
     if band == member

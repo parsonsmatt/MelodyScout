@@ -27,7 +27,8 @@ class Artist < ActiveRecord::Base
   end
   
   def add_band(band)
-    band_relations.create(band_id: band.try(:id))
+    a=Membership.new(band: band, member: self)
+    a.save if a.valid?
   end
 
   def add_release(release)
