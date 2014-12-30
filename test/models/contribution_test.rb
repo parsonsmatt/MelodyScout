@@ -15,4 +15,9 @@ class ContributionTest < ActiveSupport::TestCase
     @contribution.release_id = nil
     assert_not @contribution.valid?
   end
+
+  test "can't duplicate" do
+    cont2 = Contribution.new(artist_id: 1, release_id: 1)
+    assert_not cont2.valid?
+  end
 end
