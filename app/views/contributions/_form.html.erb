@@ -1,25 +1,5 @@
-<%= form_for(@contribution) do |f| %>
-  <% if @contribution.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+<p>Form render!</p>
 
-      <ul>
-      <% @contribution.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :artist %>
-    <%= f.select :artist, Artist.all.collect {|a| [a.name, a.id]} %>
-  </div>
-  <div class="field">
-    <%= f.label :release %>
-    <%= f.select :release, Release.all.collect {|r| [r.name, r.id]} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<% if !@artist.nil? %>
+  <%= form_for @contribution do |f| %>
+    <%= hidden_field_tag 
