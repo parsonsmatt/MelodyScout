@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get 'members'
       get 'bands'
     end
+    resources :memberships, shallow: true
   end
 
   # User resources:

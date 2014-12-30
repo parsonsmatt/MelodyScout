@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore swap. Isn't working in my global...
+*.swp
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
