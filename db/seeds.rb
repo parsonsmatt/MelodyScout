@@ -25,8 +25,8 @@ end
 # Artist seeding:
 neo = Artist.create!(name: "Ne Obliviscaris", description: Faker::Lorem.paragraph)
 at = Artist.create!(name: "Alas, Tyranny", description: Faker::Lorem.paragraph)
-tim = Artist.create!(name: "Tim Chester", description: Faker::Lorem.paragraph)
-mp = Artist.create!(name: "Matt Parsons", description: Faker::Lorem.paragraph)
+tim = Artist.create!(name: "Tim Chester", description: Faker::Lorem.paragraph, individual: true)
+mp = Artist.create!(name: "Matt Parsons", description: Faker::Lorem.paragraph, individual: true)
 
 99.times do |n|
   Artist.create!(name: "#{Faker::Address.city_suffix} #{Faker::Hacker.ingverb}",
