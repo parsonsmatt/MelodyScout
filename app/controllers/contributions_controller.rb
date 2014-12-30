@@ -38,6 +38,6 @@ class ContributionsController < ApplicationController
   end
 
   def contribution_params
-    params.require(:contribution).permit(:artist,:release)
+    params.require(:contribution).permit(:artist,:release,:artist_id)
   end
 end

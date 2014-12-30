@@ -4,6 +4,6 @@
     <% @artist.releases.each do |release| %>
       <li><%= link_to release.name, release_path(release) %></li>
     <% end %>
-    <li><%= link_to 'Add Release', '#' %></li>
+    <li><%= link_to 'Add Release', new_artist_contribution_path(@artist) %></li>
   </ul>
 </p>
