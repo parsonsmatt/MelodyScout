@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :artists do
     member do
       get 'members'
+      get 'bands'
     end
   end
 

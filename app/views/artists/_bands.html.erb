@@ -1,10 +1,18 @@
-<p>
-  <strong>Bands:</strong>
-  <ul>
-    <% @artist.bands.each do |band| %>
-      <li><%= link_to band.name, artist_path(band) %></li>
-    <% end %>
-    <li><%= link_to 'Add band', '#' %></li>
-  </ul>
-</p>
-
+<h2>Bands:</h2>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>Link</th>
+  </tr>
+  <% @artist.bands.each do |b| %>
+    <tr>
+      <td><%= b.name %></td>
+      <td>(role!)</td>
+      <td><%= link_to 'Show', artist_path(b) %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan='3' class='center'><%= link_to 'Add band!', '#' %></td>
+  </tr>
+</table>

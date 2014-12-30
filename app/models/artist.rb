@@ -12,7 +12,7 @@ class Artist < ActiveRecord::Base
   has_many :members, through: :member_relations
 
   # Bands:
-  has_many :band_relations,  class_name: "Membership",
+  has_many :band_relations, class_name: "Membership",
                              foreign_key: "member_id",
                              dependent: :destroy
   has_many :bands, through: :band_relations
@@ -45,7 +45,7 @@ class Artist < ActiveRecord::Base
     releases.count > 0
   end
 
-  def group?
+  def band?
     !individual?
   end
 

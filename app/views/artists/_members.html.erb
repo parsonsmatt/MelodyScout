@@ -1,9 +1,18 @@
-<p>
-  <strong>members:</strong>
-  <ul>
-    <% @artist.members.each do |member| %>
-      <li><%= link_to member.name, artist_path(member) %></li>
-    <% end %>
-    <li><%= link_to 'Add Member', '#' %></li>
-  </ul>
-</p>
+<h2>Members:</h2>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>Link</th>
+  </tr>
+  <% @artist.members.each do |m| %> 
+    <tr>
+      <td><%= m.name %></td>
+      <td>(eventual role)</td>
+      <td><%= link_to 'Show', artist_path(m) %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td colspan='3' class='center'><%= link_to 'Add member!', '#' %></td>
+    </tr>
+</table>
