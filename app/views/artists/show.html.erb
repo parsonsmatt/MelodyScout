@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class='row'>
-  <div class='col-md-3'>
+  <aside class='col-md-3'>
     <p>
       (eventual picture)
     </p>
@@ -23,9 +23,10 @@
     <%= render 'follow_form' if logged_in? %>
     <%= link_to 'Edit', edit_artist_path(@artist) %> |
     <%= link_to 'Back', artists_path %>
-  </div>
+  </aside>
   <div class='col-md-9'>
-
+    
+    <h1><%= @artist.name %></h1>
     <%= render 'releases' %>
 
     <%= render 'members' unless @artist.individual? %>
