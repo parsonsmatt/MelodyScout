@@ -19,7 +19,12 @@ me = User.create!(name: "Matt Parsons",
   name = Faker::Name.name
   email = "user#{n+1}@#{Faker::Internet.domain_name}"
   pw = 'password123'
-  User.create!(name: name, email: email, password: pw, password_confirmation: pw, activated: true, activated_at: Time.zone.now)
+  User.create!( name: name, 
+                email: email, 
+                password: pw, 
+                password_confirmation: pw, 
+                activated: true, activated_at: Time.zone.now
+              )
 end
 
 # Artist seeding:
@@ -30,7 +35,8 @@ mp = Artist.create!(name: "Matt Parsons", description: Faker::Lorem.paragraph, i
 
 99.times do |n|
   Artist.create!(name: "#{Faker::Address.city_suffix} #{Faker::Hacker.ingverb}",
-  description: Faker::Lorem.paragraph )
+  description: Faker::Lorem.paragraph,
+  individual: [true,false].sample)
 end
 
 # Membership seeding:
