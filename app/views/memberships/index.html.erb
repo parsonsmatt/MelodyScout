@@ -2,14 +2,14 @@
 
 <h2><%= @artist.name %>'s Members</h2>
 <ul>
-  <% @members.each do |member| %>
+  <% @artist.members.each do |member| %>
     <li><%= link_to member.name, artist_path(member) %></li>
   <% end %>
 </ul>
 
 <h2><%= @artist.name %>'s Bands</h2>
 <ul>
-  <% @bands.each do |band| %>
+  <% @artist.bands.each do |band| %>
     <li><%= link_to band.name, artist_path(band) %></li>
   <% end %>
 </ul>
