@@ -45,5 +45,9 @@ class Artist < ActiveRecord::Base
     releases.count > 0
   end
 
+  def group?
+    !individual?
+  end
+
   private
 end
