@@ -22,11 +22,13 @@ class ContributionsController < ApplicationController
   # POST /artists/:artist_id/contributions
   # POST /releases/:release_id/contributions
   def create
-    @contribution = Contribution.new(contribution_params)
-    
+    @contribution = Contribution.new
+    @contribution.release = Release.find_by(id: params[:contribution][:release])
+    @contribution.artist = Artist.find_by(id: params[:artist_id])
+
     respond_to do |format|
       if @contribution.save
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
+        format.html { redirect_to @artist, notice: 'Contribution was successfully created.' }
         format.json { render :show, status: :created, location: @contribution }
       else
         format.html { render :new }
@@ -53,6 +55,6 @@ class ContributionsController < ApplicationController
     end
 
     def contribution_params
-      params.require(:contribution).permit(:artist,:release,:artist_id)
+      params.require(:contribution).permit(:release,:artist_id)
     end
 end
