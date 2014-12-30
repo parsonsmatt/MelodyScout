@@ -1,11 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :get_artist, only: [:index]
-
-  # GET /:artist/:artist_id/memerberships
-  def index
-    @members = @artist.members
-    @bands = @artist.bands
-  end
+  before_action :get_artist, only: [:index, :new]
 
   private
 

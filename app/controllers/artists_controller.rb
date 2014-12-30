@@ -61,6 +61,18 @@ class ArtistsController < ApplicationController
     end
   end
 
+  # GET /artists/:artist_id/members
+  def members
+    set_artist
+    @members = @artist.members
+  end
+
+  # GET /artists/:artist_id/bands
+  def bands
+    set_artist
+    @bands = @artist.bands
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_artist
