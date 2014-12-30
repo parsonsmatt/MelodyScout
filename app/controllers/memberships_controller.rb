@@ -14,8 +14,7 @@ class MembershipsController < ApplicationController
       redirect_to @artist
     else
       flash[:danger] = @membership.errors
-      flash[:success] = params
-      redirect_to root_url
+      redirect_to @artist
     end
   end
 
