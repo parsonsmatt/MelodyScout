@@ -1,5 +1,5 @@
 class MembersController < ApplicationController
-  before_action :set_group, only: [:new, :create]
+  before_action :set_group, only: [:new, :create, :destroy]
 
   # GET /artists/:artist_id/members/new
   def new
@@ -13,6 +13,17 @@ class MembersController < ApplicationController
       redirect_to @group
     else
       render 'new'
+    end
+  end
+
+  # DELETE /artists/:artist_id/members/:id
+  def destroy
+    @membership = Membership.find_by(member_id: params[:id],
+                                     band_id: params[:artist_id])
+    @membership.destroy
+    respond_to do |format|
+      format.html { redirect_to @group, notice: 'Membership was deleted.' }
+      format.json { head :no_content }
     end
   end
 
