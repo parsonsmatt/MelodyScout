@@ -5,10 +5,8 @@ application up and running.
 
 ## Todo:
 
-* Fix up the Artist show view
-* Fix up the Release show view
-* Implement 'Add Release'/'Add Artist'
-* Implement 'Add Member'/'Add Band'
+* Test moar
+* Allow Artists to send messages to their followers
 
 ## Things you may want to cover:
 
