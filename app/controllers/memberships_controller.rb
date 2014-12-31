@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: [:destroy]
+  before_action :set_membership, only: [:edit, :update, :destroy]
 
   def index
     @memberships = Membership.all
@@ -16,20 +16,25 @@ class MembershipsController < ApplicationController
     end
   end
 
-  def destroy
-    store_location
-    @membership.destroy
+  def edit
+  end
 
+  def update
     respond_to do |format|
-      format.html { }
-      format.json { head :no_content }
+      if @membership.update(secure_params)
+        format.html { redirect_to @membership.band, notice: 'Membership was successfully updated.' }
+        format.json { render :show, status: :ok, location: @membership }
+      else
+        format.html { render 'edit' }
+        format.json { render json: @release.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
 
     def secure_params
-      params.require(:membership).permit(:member_id, :band_id)
+      params.require(:membership).permit(:member_id, :band_id, :role)
     end
 
     def set_membership

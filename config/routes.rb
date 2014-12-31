@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :contributions, shallow: true
   end
 
-  # resources :memberships, only: [:destroy]
+  resources :memberships, only: [:edit, :update]
 
   # User resources:
   resources :users

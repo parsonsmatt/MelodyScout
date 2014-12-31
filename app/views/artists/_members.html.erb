@@ -3,13 +3,14 @@
   <tr>
     <th>Name</th>
     <th>Role</th>
-    <th>Controls</th>
+    <th colspan='2'>Controls</th>
   </tr>
-  <% @artist.members.each do |m| %> 
+  <% @artist.member_relations.each do |m| %> 
     <tr>
-      <td><%= link_to m.name, m %></td>
-      <td>(eventual role)</td>
-      <td><%= link_to 'Delete', artist_member_path(@artist,m), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to m.member.name, m.member %></td>
+      <td><%= m.role %></td>
+      <td><%= link_to 'Edit', edit_membership_path(m) %></td>
+      <td><%= link_to 'Delete', artist_member_path(@artist,m.band), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
     <tr>
