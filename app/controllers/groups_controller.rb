@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_member, only: :new
+  before_action :set_member, only: [:new,:create]
 
   # GET artists/:artist_id/groups/new
   def new

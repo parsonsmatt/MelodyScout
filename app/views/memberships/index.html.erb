@@ -1,15 +1,16 @@
 <h1>Membership index</h1>
 
-<h2><%= @artist.name %>'s Members</h2>
-<ul>
-  <% @artist.members.each do |member| %>
-    <li><%= link_to member.name, artist_path(member) %></li>
+<table class='table'>
+  <tr>
+    <th>Group Name</th>
+    <th>Member Name</th>
+    <th>Role</th>
+  </tr>
+  <% @memberships.each do |m| %>
+    <tr>
+      <td><%= m.band.name %></td>
+      <td><%= m.member.name %></td>
+      <td>(role)</td>
+    </tr>
   <% end %>
-</ul>
-
-<h2><%= @artist.name %>'s Bands</h2>
-<ul>
-  <% @artist.bands.each do |band| %>
-    <li><%= link_to band.name, artist_path(band) %></li>
-  <% end %>
-</ul>
+</table>
