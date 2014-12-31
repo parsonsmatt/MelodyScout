@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   
   # Artists:
   resources :artists do
-    resources :groups
-    resources :members
+    resources :groups, only: [:new, :create, :destroy]
+    resources :members, only: [:new, :create, :destroy]
     resources :contributions, shallow: true
   end
 
