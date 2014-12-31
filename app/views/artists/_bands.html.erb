@@ -1,15 +1,15 @@
-<h2>Bands:</h2>
+<h2>Groups:</h2>
 <table class="table">
   <tr>
     <th>Name</th>
     <th>Role</th>
-    <th>Link</th>
+    <th>Controls</th>
   </tr>
-  <% @artist.bands.each do |b| %>
+  <% @artist.band_relations.each do |b| %>
     <tr>
-      <td><%= b.name %></td>
+      <td><%= link_to b.band.name, artist_path(b.band) %></td>
       <td>(role!)</td>
-      <td><%= link_to 'Show', artist_path(b) %></td>
+      <td><%= link_to 'Destroy ', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   <tr>

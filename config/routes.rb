@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :contributions, shallow: true
   end
 
-  resources :memberships
+  resources :memberships, only: [:destroy]
 
   # User resources:
   resources :users
