@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   
   # Artists:
   resources :artists do
-    member do
-      get 'members'
-      get 'bands'
-    end
-    resources :memberships, shallow: true
+    resources :groups
+    resources :members
     resources :contributions, shallow: true
   end
+
+  resources :memberships
 
   # User resources:
   resources :users
