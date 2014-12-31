@@ -1,0 +1,10 @@
+<h1>New member for <%= @group.name %></h1>
+
+<%= form_for(@group.member_relations.build, url: artist_members_path) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :band_id, value: @group.id %>
+  <%= f.select :member_id, Artist.where(individual: true).collect { |a| [a.name,a.id] } %>
+
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>
