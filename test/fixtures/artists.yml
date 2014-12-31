@@ -3,11 +3,24 @@
 one:
   name: ArtistOne
   description: MyText
+  individual: true
 
 two:
   name: ArtistTwo
   description: MyText
+  individual: false
 
 three:
   name: ArtistThree
   description: someText
+  individual: false
+
+individual:
+  name: "Test Member"
+  description: "test member for fixtures"
+  individual: true
+
+group:
+  name: "Test Group"
+  description: "test group fixtures"
+  individual: false
