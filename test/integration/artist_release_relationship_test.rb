@@ -26,11 +26,15 @@ class ArtistReleaseRelationshipTest < ActionDispatch::IntegrationTest
 
   test "can't duplicate relationship" do
     @a1.add_release(@r1)
-    assert_raises(ActiveRecord::RecordNotUnique) { @a1.add_release(@r1) }
+    assert_no_difference '@a1.releases.count' do
+      @a1.add_release(@r1)
+    end
   end
 
   test "can't duplicate from asymmetry" do
     @a1.add_release(@r1)
-    assert_raises(ActiveRecord::RecordNotUnique) { @r1.add_artist(@a1) }
+    assert_no_difference '@a1.releases.count' do
+      @r1.add_artist(@a1)
+    end
   end
 end
