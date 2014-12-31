@@ -9,6 +9,8 @@ class GroupsController < ApplicationController
   # POST artists/:artist_id/groups
   def create
     @membership = Membership.new(member_params)
+    @membership.band_id = params[:artist_id]
+
     if @membership.save
       flash[:success] = "Group added!"
       redirect_to @member
@@ -17,6 +19,7 @@ class GroupsController < ApplicationController
     end
   end
 
+  # DELETE artists/:artist_id/groups/:id
   def destroy
     @membership = Membership.find_by(band_id: params[:id],
                                      member_id: params[:artist_id])
@@ -34,6 +37,6 @@ class GroupsController < ApplicationController
     end
 
     def member_params
-      params.require(:membership).permit(:band_id, :member_id)
+      params.require(:membership).permit(:member_id)
     end
 end

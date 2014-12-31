@@ -3,7 +3,51 @@ require 'test_helper'
 class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
   
   def setup
-    
+    @g = artists(:group)
+    @m = artists(:individual)
   end
 
+  test "group page has members section" do
+    get artist_path(@g)
+    assert_template 'artists/_members'
+  end
+
+  test "member page has groups section" do
+    get artist_path(@m)
+    assert_template 'artists/_groups'
+  end
+
+  test "add member to group" do
+    post artist_groups_path(@g), membership: { member_id: @m.id }
+    assert_not flash.empty?
+    assert_redirected_to @g
+    follow_redirect!
+    assert_select 'a', text: @m.name
+    get artist_path(@m)
+    assert_select 'a', text: @g.name
+  end
+
+  test "add group to member" do
+    post artist_members_path(@m), membership: { band_id: @g.id }
+    assert_not flash.empty?
+    assert_redirected_to @m
+    follow_redirect!
+    assert_select 'a', text: @g.name
+    get artist_path(@g)
+    assert_select 'a', text: @m.name
+  end
+
+  test "delete group from member" do
+    @g.add_member(@m)
+    delete artist_member_path(@g,@m)
+    assert_not flash.empty?
+    assert_not @g.members.include?(@m)
+  end
+
+  test "delete member from group" do
+    @g.add_member(@m)
+    delete artist_group_path(@m, @g)
+    assert_not flash.empty?
+    assert_not @g.members.include?(@m)
+  end
 end

@@ -8,6 +8,8 @@ class MembersController < ApplicationController
   # POST /artists/:artist_id/members
   def create
     @membership = Membership.new(member_params)
+    @membership.member_id = params[:artist_id]
+
     if @membership.save
       flash[:success] = "Member added!"
       redirect_to @group
@@ -34,6 +36,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:membership).permit(:band_id, :member_id)
+      params.require(:membership).permit(:band_id)
     end
 end

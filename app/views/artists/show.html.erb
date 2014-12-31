@@ -29,9 +29,9 @@
     <h1><%= @artist.name %></h1>
     <%= render 'releases' %>
 
-    <%= render 'members' unless @artist.individual? %>
+    <%= render 'members' if @artist.band? %>
     
-    <%= render 'bands' unless @artist.band? %>
+    <%= render 'groups' if @artist.individual? %>
 
   </div>
 </div>
