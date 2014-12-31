@@ -11,7 +11,7 @@ class MembershipsController < ApplicationController
       redirect_to @membership
     else
       flash[:danger] = @membership.errors
-      redirect_to @membership
+      render 'new'
     end
   end
 
