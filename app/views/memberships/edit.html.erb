@@ -1,0 +1,9 @@
+<h1>Edit Membership:</h1>
+<p>between <%= @membership.band.name %> and <%= @membership.member.name %></p>
+
+<%= form_for(@membership) do |f| %>
+  <%= f.label :role %>
+  <%= f.text_field :role %>
+
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>
