@@ -5,11 +5,11 @@
     <th>Role</th>
     <th>Controls</th>
   </tr>
-  <% @artist.band_relations.each do |b| %>
+  <% @artist.bands.each do |b| %>
     <tr>
-      <td><%= link_to b.band.name, artist_path(b.band) %></td>
+      <td><%= link_to b.name, artist_path(b) %></td>
       <td>(role!)</td>
-      <td><%= link_to 'Destroy ', b, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Destroy ', artist_group_path(@artist,b), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   <tr>
