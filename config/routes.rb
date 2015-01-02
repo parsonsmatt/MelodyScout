@@ -5,17 +5,20 @@ Rails.application.routes.draw do
 
   # Releases:
   resources :releases do
-    resources :contributions, shallow: true
+    resources :contributions, only: [:new, :create, :destroy]
   end
   
   # Artists:
   resources :artists do
     resources :groups, only: [:new, :create, :destroy]
     resources :members, only: [:new, :create, :destroy] 
-    resources :contributions, shallow: true
+    resources :contributions, only: [:new, :create, :destroy]
   end
 
   resources :memberships, only: [:edit, :update]
+
+  # Contributions:
+  resources :contributions
 
   # User resources:
   resources :users
