@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
-  before_action :set_group, only: [:new, :create, :destroy]
+  before_action :set_group, only: [:new, :create, :edit, :destroy, :update]
+  before_action :set_membership, only: [:edit, :destroy, :update]
 
   # GET /artists/:artist_id/members/new
   def new
@@ -8,7 +9,7 @@ class MembersController < ApplicationController
   # POST /artists/:artist_id/members
   def create
     @membership = Membership.new(member_params)
-    @membership.member_id = params[:artist_id]
+    @membership.band_id = params[:artist_id]
 
     if @membership.save
       flash[:success] = "Member added!"
@@ -20,8 +21,6 @@ class MembersController < ApplicationController
 
   # DELETE /artists/:artist_id/members/:id
   def destroy
-    @membership = Membership.find_by(member_id: params[:id],
-                                     band_id: params[:artist_id])
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to @group, notice: 'Membership was deleted.' }
@@ -35,7 +34,16 @@ class MembersController < ApplicationController
       @group = Artist.find(params[:artist_id])
     end
 
+    def set_membership
+      @membership = Membership.find_by(member_id: params[:id],
+                                       band_id: params[:artist_id])
+    end
+
     def member_params
-      params.require(:membership).permit(:band_id)
+      params.require(:membership).permit(:member_id, :role)
+    end
+
+    def update_params
+      params.require(:membership).permit(:role)
     end
 end

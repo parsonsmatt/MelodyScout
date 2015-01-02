@@ -17,17 +17,15 @@ class MembershipsController < ApplicationController
   end
 
   def edit
+    session[:return_to] ||= request.referer
   end
 
   def update
-    respond_to do |format|
-      if @membership.update(secure_params)
-        format.html { redirect_to @membership.band, notice: 'Membership was successfully updated.' }
-        format.json { render :show, status: :ok, location: @membership }
-      else
-        format.html { render 'edit' }
-        format.json { render json: @release.errors, status: :unprocessable_entity }
-      end
+    if @membership.update(update_params)
+      flash[:success] = "Membership updated!"
+      redirect_to session.delete(:return_to) 
+    else
+      render 'edit'
     end
   end
 
@@ -35,6 +33,10 @@ class MembershipsController < ApplicationController
 
     def secure_params
       params.require(:membership).permit(:member_id, :band_id, :role)
+    end
+
+    def update_params
+      params.require(:membership).permit(:role)
     end
 
     def set_membership

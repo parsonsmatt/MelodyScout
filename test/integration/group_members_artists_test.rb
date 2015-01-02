@@ -18,7 +18,7 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
   end
 
   test "add member to group" do
-    post artist_groups_path(@g), membership: { member_id: @m.id }
+    post artist_members_path(@g), membership: { member_id: @m.id }
     assert_not flash.empty?
     assert_redirected_to @g
     follow_redirect!
@@ -28,7 +28,7 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
   end
 
   test "add group to member" do
-    post artist_members_path(@m), membership: { band_id: @g.id }
+    post artist_groups_path(@m), membership: { band_id: @g.id }
     assert_not flash.empty?
     assert_redirected_to @m
     follow_redirect!

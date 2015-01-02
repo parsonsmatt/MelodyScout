@@ -8,8 +8,8 @@ class GroupsController < ApplicationController
 
   # POST artists/:artist_id/groups
   def create
-    @membership = Membership.new(member_params)
-    @membership.band_id = params[:artist_id]
+    @membership = Membership.new(group_params)
+    @membership.member_id = params[:artist_id]
 
     if @membership.save
       flash[:success] = "Group added!"
@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
       @member = Artist.find_by(id: params[:artist_id])
     end
 
-    def member_params
-      params.require(:membership).permit(:member_id)
+    def group_params
+      params.require(:membership).permit(:band_id)
     end
 end
