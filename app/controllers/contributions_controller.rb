@@ -1,8 +1,9 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :edit, :update, :destroy]
-  before_action :set_artist, only: [:new, :create]
-  before_action :set_release, only: [:new, :create]
-  
+  before_action :set_artist, only: [:new, :create, :update]
+  before_action :set_release, only: [:new, :create, :update]
+  before_action :set_return, only: [:new, :edit]
+
   # GET /artists/:artist_id/contributions
   # GET /releases/:release_id/contributions
   def index
@@ -22,14 +23,21 @@ class ContributionsController < ApplicationController
   # POST /artists/:artist_id/contributions
   # POST /releases/:release_id/contributions
   def create
-    @contribution = Contribution.new
-    @contribution.release = Release.find_by(id: params[:contribution][:release])
-    @contribution.artist = Artist.find_by(id: params[:artist_id])
+    @contribution = Contribution.new(contribution_params)
+    @contribution.release_id ||= params[:release_id]
+    @contribution.artist_id  ||= params[:artist_id]
 
     respond_to do |format|
       if @contribution.save
-        format.html { redirect_to @artist, notice: 'Contribution was successfully created.' }
-        format.json { render :show, status: :created, location: @contribution }
+        format.html { 
+          redirect_to originating_page,
+          notice: 'Contribution was successfully created.' 
+        }
+        format.json {
+          render :show, 
+          status: :created, 
+          location: @contribution
+        }
       else
         format.html { render :new }
         format.json { render json: @contribution.errors, status: :unprocessable_entity }
@@ -38,7 +46,6 @@ class ContributionsController < ApplicationController
   end
 
   def edit
-    session[:return_to] ||= request.referer
   end
 
   def update
@@ -65,11 +72,19 @@ class ContributionsController < ApplicationController
     end
 
     def contribution_params
-      params.require(:contribution).permit(:release,:artist_id)
+      params.require(:contribution).permit(:release_id,:artist_id)
     end
     
     def update_params
       params.require(:contribution).permit(:role)
+    end
+
+    def set_return
+      session[:return_to] ||= request.referer
+    end
+
+    def originating_page
+      params[:release_id] ? release_path(@release) : artist_path(@artist)
     end
 
 end

@@ -69,5 +69,10 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
     get artist_path(@m)
     assert_select 'a', text: @g.name
     membership = Membership.find_by(band_id: @g.id, member_id: @m.id)
+    get edit_membership_path(membership), nil,
+      { HTTP_REFERER: artist_path(@m) }
+    assert_template 'memberships/edit'
+    patch membership_path(membership), membership: { role: "test" }
+    assert_redirected_to artist_path(@m)
   end
 end
