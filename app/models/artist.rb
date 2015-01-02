@@ -25,10 +25,15 @@ class Artist < ActiveRecord::Base
     a=Membership.new(band: self, member: other_artist)
     a.save if a.valid?
   end
-  
+
+  # Really need to remove all references to 'band'...
   def add_band(band)
     a=Membership.new(band: band, member: self)
     a.save if a.valid?
+  end
+
+  def add_group(group)
+    Membership.create(band: group, member: self)
   end
 
   def add_release(release)

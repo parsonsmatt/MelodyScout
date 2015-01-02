@@ -50,4 +50,24 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_not @g.members.include?(@m)
   end
+
+  test "edit member from group redirects to group" do
+    @g.add_member(@m)
+    get artist_path(@g)
+    assert_select 'a', text: @m.name
+    membership = Membership.find_by(band_id: @g.id, member_id: @m.id)
+    assert_select 'a[href=?]', edit_membership_path(membership)
+    get edit_membership_path(membership), nil, 
+        { HTTP_REFERER: artist_path(@g) }
+    assert_template 'memberships/edit'
+    patch membership_path(membership), membership: { role: "test" }
+    assert_redirected_to artist_path(@g)
+  end
+
+  test "edit membership from member redirects to member" do
+    @m.add_group(@g)
+    get artist_path(@m)
+    assert_select 'a', text: @g.name
+    membership = Membership.find_by(band_id: @g.id, member_id: @m.id)
+  end
 end
