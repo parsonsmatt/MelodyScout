@@ -1,33 +1,17 @@
 <%= form_for(@release) do |f| %>
-  <% if @release.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@release.errors.count, "error") %> prohibited this release from being saved:</h2>
+  <%= render 'shared/error_messages', object: f.object %>
 
-      <ul>
-      <% @release.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
+  
+  
+    <%= f.label :description %>
     <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
+  
+  
+    <%= f.label :date %>
     <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :artist %><br>
-    <%= f.select :artists, Artist.all.collect {|a| [a.name, a.id]} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  
 <% end %>

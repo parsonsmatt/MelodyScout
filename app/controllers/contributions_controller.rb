@@ -38,6 +38,16 @@ class ContributionsController < ApplicationController
   end
 
   def edit
+    session[:return_to] ||= request.referer
+  end
+
+  def update
+    if @contribution.update(update_params)
+      flash[:success] = "Contribution successfuly updated!"
+      redirect_to session.delete(:return_to)
+    else
+      render 'edit'
+    end
   end
 
   private
@@ -57,4 +67,9 @@ class ContributionsController < ApplicationController
     def contribution_params
       params.require(:contribution).permit(:release,:artist_id)
     end
+    
+    def update_params
+      params.require(:contribution).permit(:role)
+    end
+
 end

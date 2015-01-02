@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   # Releases:
-  resources :releases
+  resources :releases do
+    resources :contributions, shallow: true
+  end
   
   # Artists:
   resources :artists do

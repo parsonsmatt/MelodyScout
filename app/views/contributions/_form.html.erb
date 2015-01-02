@@ -1,9 +1,9 @@
-<% if !@artist.nil? %>
-  <%= form_for @contribution, url: artist_contributions_path(@artist) do |f| %>
-    <%= hidden_field_tag :artist, @artist %>
-    <%= f.label :release %>
-    <%= f.select :release, Release.all.collect { |r| [r.name, r.id] } %>
-    <%= f.submit 'Submit', class: 'btn btn-primary' %>
-  <% end %>
+<%= form_for @contribution do |f| %>
+ 
+  <%= f.label :role %>
+  <%= f.text_field :role %>
+
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+
 <% end %>
 

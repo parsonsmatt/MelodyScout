@@ -1,9 +1,21 @@
-<p>
-  <strong>Releases:</strong>
-  <ul>
-    <% @artist.releases.each do |release| %>
-      <li><%= link_to release.name, release_path(release) %></li>
-    <% end %>
-    <li><%= link_to 'Add Release', new_artist_contribution_path(@artist) %></li>
-  </ul>
-</p>
+<h2>Contributions</h2>
+<table class='table'>
+  <tr>
+    <th>Release</th>
+    <th>Role</th>
+    <th colspan='2'></th>
+  </tr>
+  <% @artist.contributions.each do |c| %>
+    <tr>
+      <td><%= link_to c.release.name, release_path(c.release) %></td>
+      <td><%= c.role %></td>
+      <td><%= link_to 'Edit', edit_contribution_path(c) %></td>
+      <td><%= link_to 'Destroy', contribution_path(c), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan='4' class='center'>
+      <%= link_to 'Add Release', new_artist_contribution_path(@artist) %>
+    </td>
+  </tr>
+</table>
