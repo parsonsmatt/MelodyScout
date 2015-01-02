@@ -25,8 +25,4 @@ class MembersControllerTest < ActionController::TestCase
     assert_select 'div', id: 'error_explanation'
   end
 
-  test "should get edit" do
-    get :edit, artist_id: @g.id
-  end
-
 end
