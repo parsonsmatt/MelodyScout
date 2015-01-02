@@ -3,7 +3,7 @@ require 'test_helper'
 class ContributionTest < ActiveSupport::TestCase
 
   def setup
-    @contribution = Contribution.new(artist_id: 1, release_id: 1)
+    @contribution = contributions(:one)
   end
 
   test "must have artist" do
@@ -15,4 +15,5 @@ class ContributionTest < ActiveSupport::TestCase
     @contribution.release_id = nil
     assert_not @contribution.valid?
   end
+
 end
