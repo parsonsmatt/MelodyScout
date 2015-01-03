@@ -5,6 +5,9 @@ class ContributionsTest < ActionDispatch::IntegrationTest
   def setup
     @artist = artists(:one)
     @release = releases(:one)
+    @user = users(:one)
+    @admin = users(:admin)
+    log_in_as(@user)
   end
 
   test "artist has new contribution link" do
@@ -50,21 +53,30 @@ class ContributionsTest < ActionDispatch::IntegrationTest
     assert_redirected_to artist_path(@artist)
   end
 
-  test "destroy cont from artist" do
+  test "destroy cont from artist as admin" do
+    log_in_as(@admin)
     cont = new_contribution(@artist, @release)
     delete artist_contribution_path(@artist, cont)
     assert_not flash.empty?
     assert_redirected_to artist_path(@artist)
   end
  
-  test "destroy cont from release" do
+  test "destroy cont from release as admin" do
+    log_in_as(@admin)
     cont = new_contribution(@artist, @release)
     delete release_contribution_path(@release, cont)
     assert_not flash.empty?
     assert_redirected_to release_path(@release)
   end
 
-  private
+  test "destroy cont from release as user" do
+    cont = new_contribution(@artist, @release)
+    delete release_contribution_path(@release, cont)
+    assert_not flash.empty?
+    assert_redirected_to root_path
+  end
+
+ private
 
 
     def new_contribution(art, release)

@@ -3,6 +3,10 @@ class ContributionsController < ApplicationController
   before_action :set_artist, only: [:new, :create, :update, :destroy]
   before_action :set_release, only: [:new, :create, :update]
   before_action :set_return, only: [:new, :edit]
+  before_action :logged_in_user, only: [
+    :new, :create, :edit, :update 
+  ]
+  before_action :admin_only, only: [:destroy]
 
   # GET /artists/:artist_id/contributions
   # GET /releases/:release_id/contributions
