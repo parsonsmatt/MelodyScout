@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :memberships, only: [:edit, :update]
 
   # Contributions:
-  resources :contributions
+  resources :contributions, only: [:edit, :update]
 
   # User resources:
   resources :users

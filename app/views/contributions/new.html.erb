@@ -2,15 +2,34 @@
 
 <h2><%= @artist.try(:name) %><%= @release.try(:name) %></h2>
 
-<%= form_for @contribution do |f| %>
-  
+<%= form_for(@contribution, url: get_right_url ) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
   <% if params[:release_id] %>
-    <%= f.hidden_field :release_id, value: params[:release_id] %>
+    
+    <%  f.hidden_field :release_id, value: params[:release_id] %>
+
+    <%= f.label :artist_id %>
+    <%= f.select :artist_id, Artist.all.collect { |a| [a.name, a.id] } %>
+
   <% else %>  
-    <%= f.label :release %>
-    <%= f.select :release, Release.all.collect { |r| [r.name, r.id] } %>
+
+    <%  f.hidden_field :artist_id, value: params[:artist_id] %>
+
+    <%= f.label :release_id %>
+    <%= f.select :release_id, Release.all.collect { |r| [r.name, r.id] } %>
   <% end %>
   
-  TODO: add the smart form stuff for the artist
+  <%= f.label :role %>
+  <%= f.text_field :role %>
 
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
+
+<% 
+
+  def get_right_url
+    params[:release_id] ? release_contributions_path(@release) : artist_contributions_path(@artist)
+  end
+
+%>

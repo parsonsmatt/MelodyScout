@@ -50,7 +50,22 @@ class ContributionsTest < ActionDispatch::IntegrationTest
     assert_redirected_to artist_path(@artist)
   end
 
+  test "destroy cont from artist" do
+    cont = new_contribution(@artist, @release)
+    delete artist_contribution_path(@artist, cont)
+    assert_not flash.empty?
+    assert_redirected_to artist_path(@artist)
+  end
+ 
+  test "destroy cont from release" do
+    cont = new_contribution(@artist, @release)
+    delete release_contribution_path(@release, cont)
+    assert_not flash.empty?
+    assert_redirected_to release_path(@release)
+  end
+
   private
+
 
     def new_contribution(art, release)
       art.contributions.create(release: release, role: "test")

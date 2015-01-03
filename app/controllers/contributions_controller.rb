@@ -1,6 +1,6 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :edit, :update, :destroy]
-  before_action :set_artist, only: [:new, :create, :update]
+  before_action :set_artist, only: [:new, :create, :update, :destroy]
   before_action :set_release, only: [:new, :create, :update]
   before_action :set_return, only: [:new, :edit]
 
@@ -29,9 +29,9 @@ class ContributionsController < ApplicationController
 
     respond_to do |format|
       if @contribution.save
+        flash[:success] = "Contribution was successfully created."
         format.html { 
-          redirect_to originating_page,
-          notice: 'Contribution was successfully created.' 
+          redirect_to originating_page
         }
         format.json {
           render :show, 
@@ -57,6 +57,15 @@ class ContributionsController < ApplicationController
     end
   end
 
+  def destroy
+    @contribution.destroy
+    flash[:success] = "Contribution deleted."
+    respond_to do |format|
+      format.html { redirect_to originating_page }
+    end
+        
+  end
+
   private
   
     def set_contribution
@@ -72,7 +81,7 @@ class ContributionsController < ApplicationController
     end
 
     def contribution_params
-      params.require(:contribution).permit(:release_id,:artist_id)
+      params.require(:contribution).permit(:release_id,:artist_id, :role)
     end
     
     def update_params
@@ -83,8 +92,9 @@ class ContributionsController < ApplicationController
       session[:return_to] ||= request.referer
     end
 
+    # Can come from either Artists or Releases page
     def originating_page
-      params[:release_id] ? release_path(@release) : artist_path(@artist)
+      params[:release_id] ? release_path(set_release) : artist_path(@artist)
     end
 
 end
