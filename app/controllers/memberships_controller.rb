@@ -34,7 +34,7 @@ class MembershipsController < ApplicationController
   private
 
     def secure_params
-      params.require(:membership).permit(:member_id, :band_id, :role)
+      params.require(:membership).permit(:member_id, :group_id, :role)
     end
 
     def update_params

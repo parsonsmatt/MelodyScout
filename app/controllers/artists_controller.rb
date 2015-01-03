@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [
-    :show, :edit, :update, :destroy, :members, :bands
+    :show, :edit, :update, :destroy, :members, :groups
   ]
   before_action :logged_in_user, only: [
     :new, :create, :edit, :update
@@ -74,9 +74,9 @@ class ArtistsController < ApplicationController
     @members = @artist.members
   end
 
-  # GET /artists/:artist_id/bands
-  def bands
-    @bands = @artist.bands
+  # GET /artists/:artist_id/groups
+  def groups
+    @groups = @artist.groups
   end
 
   private

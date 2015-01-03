@@ -29,7 +29,7 @@
     <h1><%= @artist.name %></h1>
     <%= render 'releases' %>
 
-    <%= render 'members' if @artist.band? %>
+    <%= render 'members' if @artist.group? %>
     
     <%= render 'groups' if @artist.individual? %>
 

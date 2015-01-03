@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
 
   # DELETE artists/:artist_id/groups/:id
   def destroy
-    @membership = Membership.find_by(band_id: params[:id],
+    @membership = Membership.find_by(group_id: params[:id],
                                      member_id: params[:artist_id])
     @membership.destroy
     respond_to do |format|
@@ -39,6 +39,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:membership).permit(:band_id)
+      params.require(:membership).permit(:group_id)
     end
 end

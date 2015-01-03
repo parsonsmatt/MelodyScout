@@ -14,9 +14,9 @@ class ArtistMembershipRelationshipTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "artist can be band of another" do
-    assert_difference '@a1.bands.count', 1 do
-      @a1.add_band(@a2)
+  test "artist can be group of another" do
+    assert_difference '@a1.groups.count', 1 do
+      @a1.add_group(@a2)
     end
   end
 
@@ -27,19 +27,19 @@ class ArtistMembershipRelationshipTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "can't be both member/band at same time" do
+  test "can't be both member/group at same time" do
     @a1.add_member(@a2)
     assert @a1.members.include?(@a2)
     @a2.add_member(@a1)
-    assert_not @a1.bands.include?(@a2)
+    assert_not @a1.groups.include?(@a2)
   end
 
-  test "can't be member or band of self" do
+  test "can't be member or group of self" do
     assert_no_difference 'Membership.all.count' do
       @a1.add_member(@a1)
     end
     assert_no_difference 'Membership.all.count' do
-      @a1.add_band(@a1)
+      @a1.add_group(@a1)
     end
   end
 end

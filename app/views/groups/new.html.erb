@@ -3,7 +3,7 @@
 
 <%= form_for(@member.member_relations.build, url: artist_groups_path) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <%= f.label :band_id %>
-  <%= f.select :band_id, Artist.where(individual: false).collect { |g| [g.name, g.id] } %>
+  <%= f.label :group_id %>
+  <%= f.select :group_id, Artist.where(individual: false).collect { |g| [g.name, g.id] } %>
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>

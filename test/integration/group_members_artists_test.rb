@@ -36,7 +36,7 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
 
   test "add group to member logged in" do
     log_in_as(@user)
-    post artist_groups_path(@m), membership: { band_id: @g.id }
+    post artist_groups_path(@m), membership: { group_id: @g.id }
     assert_not flash.empty?
     assert_redirected_to @m
     follow_redirect!
@@ -46,7 +46,7 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
   end
 
   test "add group to member not logged in" do
-    post artist_groups_path(@m), membership: { band_id: @g.id }
+    post artist_groups_path(@m), membership: { group_id: @g.id }
     assert_redirected_to login_path
   end
 
@@ -82,7 +82,7 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
     @g.add_member(@m)
     get artist_path(@g)
     assert_select 'a', text: @m.name
-    membership = Membership.find_by(band_id: @g.id, member_id: @m.id)
+    membership = Membership.find_by(group_id: @g.id, member_id: @m.id)
     assert_select 'a[href=?]', edit_membership_path(membership)
     get edit_membership_path(membership), nil, 
         { HTTP_REFERER: artist_path(@g) }
@@ -101,7 +101,7 @@ class GroupMembersArtistsTest < ActionDispatch::IntegrationTest
     @m.add_group(@g)
     get artist_path(@m)
     assert_select 'a', text: @g.name
-    membership = Membership.find_by(band_id: @g.id, member_id: @m.id)
+    membership = Membership.find_by(group_id: @g.id, member_id: @m.id)
     get edit_membership_path(membership), nil,
       { HTTP_REFERER: artist_path(@m) }
     assert_redirected_to login_path

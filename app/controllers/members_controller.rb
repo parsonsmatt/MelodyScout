@@ -11,7 +11,7 @@ class MembersController < ApplicationController
   # POST /artists/:artist_id/members
   def create
     @membership = Membership.new(member_params)
-    @membership.band_id = params[:artist_id]
+    @membership.group_id = params[:artist_id]
 
     if @membership.save
       flash[:success] = "Member added!"
@@ -38,7 +38,7 @@ class MembersController < ApplicationController
 
     def set_membership
       @membership = Membership.find_by(member_id: params[:id],
-                                       band_id: params[:artist_id])
+                                       group_id: params[:artist_id])
     end
 
     def member_params
