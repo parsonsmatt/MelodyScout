@@ -12,17 +12,32 @@ class ArtistsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:artists)
   end
 
-  test "should get new" do
+  test "should get new if logged in" do
+    log_in_as(@user)
     get :new
     assert_response :success
   end
 
-  test "should create artist" do
+  test "should not get new if logged in" do
+    get :new
+    assert_redirected_to login_path
+  end
+
+  test "should create artist if logged in" do
+    log_in_as(@user)
     assert_difference('Artist.count') do
       post :create, artist: { description: @artist.description, name: @artist.name }
     end
 
     assert_redirected_to artist_path(assigns(:artist))
+  end
+
+  test "should not create artist if not logged in" do
+    assert_no_difference('Artist.count') do
+      post :create, artist: { description: @artist.description, name: @artist.name }
+    end
+
+    assert_redirected_to login_path
   end
 
   test "should show artist" do
