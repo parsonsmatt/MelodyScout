@@ -1,0 +1,31 @@
+<aside class='col-md-3'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th colspan='2' class='center'>
+          Info
+          <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#artist_info_collapse">
+            <span class="sr-only">Toggle Artist Info</span>
+            <% 3.times do %><span class="icon-bar black"></span><% end %>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody class='collapse navbar-collapse' id="artist_info_collapse">
+      <% { "Name" => @artist.name,
+           "Picture" => image_tag("artist.png", size: "50x50", alt: @artist.name),
+           "Description" => @artist.description,
+           "Followers" => @artist.followers.count,
+           "Releases" => @artist.releases.count,
+           "Associations" => @artist.members.count+@artist.groups.count
+         }.each do |text, item| %>
+        <tr>
+          <td><strong><%= text %>:</strong></td>
+          <td><%= item %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render 'follow_form' if logged_in? %>
+  <%= link_to 'Edit', edit_artist_path(@artist) if logged_in? %>
+</aside>

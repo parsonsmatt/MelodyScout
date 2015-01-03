@@ -26,19 +26,8 @@ textarea {
 
 /* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold; 
-
-  &:hover {
-    text-decoration: none;
-  }
+header {
+  box-shadow: 0px 0px 15px;
 }
 
 /* sidebar */
@@ -67,6 +56,10 @@ aside {
       margin-top: 0px;
     }
   }
+  button {
+    background: $gray;
+    float: left;
+  }
 }
 
 .gravatar {
@@ -76,6 +69,31 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+}
+
+/* footer */
+
+footer {
+  margin-top: 40px;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 10px;
+  border-top: 1px solid $gray-light;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  
+  ul {
+    float: right;
+    display: inline;
+    list-style: none;
+    li {
+      display: inline;
+      &+ li:before {
+        content: "| "
+      }
+    }
+  }
 }
 
 /* typography */

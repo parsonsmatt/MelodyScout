@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   # Static pages:
   root 'welcome#index'
+  get 'about'     => 'welcome#about'
+  get 'contact'   => 'welcome#contact'
+  get 'facebook'  => redirect('http://www.facebook.com/')
 
   # Releases:
   resources :releases do
@@ -27,10 +30,10 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   
   # Login:
-  get     'login'  => 'sessions#new'
-  get     'register' => 'users#new'  
-  post    'login'  => 'sessions#create'
-  delete  'logout' => 'sessions#destroy'
+  get     'login'     => 'sessions#new'
+  get     'register'  => 'users#new'  
+  post    'login'     => 'sessions#create'
+  delete  'logout'    => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

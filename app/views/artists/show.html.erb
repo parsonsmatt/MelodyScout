@@ -1,32 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <div class='row'>
-  <aside class='col-md-3'>
-    <p>
-      (eventual picture)
-    </p>
-
-    <p>
-      <strong>Name:</strong>
-      <%= @artist.name %>
-    </p>
-
-    <p>
-      <strong>Description:</strong>
-      <%= @artist.description %>
-    </p>
-
-    <p>
-      <strong>Followers:</strong>
-      <%= @artist.followers.count %>
-    </p>
-    <%= render 'follow_form' if logged_in? %>
-    <%= link_to 'Edit', edit_artist_path(@artist) if logged_in? %>
-    <%= link_to 'Back', artists_path %>
-  </aside>
+  <h1 class='title'><%= @artist.name %></h1>
+</div>
+<div class='row'>
+  <%= render 'sidebar' %>
   <div class='col-md-9'>
     
-    <h1><%= @artist.name %></h1>
     <%= render 'releases' %>
 
     <%= render 'members' if @artist.group? %>
