@@ -1,5 +1,7 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :admin_only, only: [:destroy]
 
   def index
     @memberships = Membership.all

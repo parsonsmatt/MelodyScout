@@ -7,9 +7,10 @@ class MembersControllerTest < ActionController::TestCase
     @g = artists(:group)
     @first = artists(:one)
     @g.add_member(@first)
+    log_in_as(users(:one))
   end
 
-  test "should get new" do
+  test "should get new logged in" do
     get :new, artist_id: @g.id
     assert_template 'members/new'
   end

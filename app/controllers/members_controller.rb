@@ -1,6 +1,8 @@
 class MembersController < ApplicationController
   before_action :set_group, only: [:new, :create, :edit, :destroy, :update]
   before_action :set_membership, only: [:edit, :destroy, :update]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update]
+  before_action :admin_only, only: [:destroy]
 
   # GET /artists/:artist_id/members/new
   def new
