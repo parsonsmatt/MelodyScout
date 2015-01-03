@@ -21,7 +21,7 @@
       <%= @artist.followers.count %>
     </p>
     <%= render 'follow_form' if logged_in? %>
-    <%= link_to 'Edit', edit_artist_path(@artist) %> |
+    <%= link_to 'Edit', edit_artist_path(@artist) if logged_in? %>
     <%= link_to 'Back', artists_path %>
   </aside>
   <div class='col-md-9'>
