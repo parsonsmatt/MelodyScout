@@ -1,5 +1,11 @@
 class ReleasesController < ApplicationController
-  before_action :set_release, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [
+    :new, :create, :edit, :update
+  ]
+  before_action :admin_only, only: [:destroy]
+  before_action :set_release, only: [
+    :show, :edit, :update, :destroy
+  ]
 
   # GET /releases
   # GET /releases.json
