@@ -10,7 +10,7 @@
       <td><%= link_to b.band.name, artist_path(b.band) %></td>
       <td><%= b.role %></td>
       <td><%= link_to 'Edit', edit_membership_path(b) %></td>
-      <td><%= link_to 'Destroy ', artist_group_path(@artist,b.band), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Destroy ', artist_group_path(@artist,b.band), method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
     </tr>
   <% end %>
   <tr>

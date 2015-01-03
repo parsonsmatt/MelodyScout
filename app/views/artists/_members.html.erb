@@ -10,7 +10,7 @@
       <td><%= link_to m.member.name, m.member %></td>
       <td><%= m.role %></td>
       <td><%= link_to 'Edit', edit_membership_path(m) %></td>
-      <td><%= link_to 'Delete', artist_member_path(@artist,m.member), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Delete', artist_member_path(@artist,m.member), method: :delete, data: { confirm: 'Are you sure?' } if current_user.admin? %></td>
     </tr>
   <% end %>
     <tr>
