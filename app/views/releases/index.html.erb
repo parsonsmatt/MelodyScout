@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
 
 <h1>Listing Releases</h1>
 
@@ -15,12 +15,11 @@
   <tbody>
     <% @releases.each do |release| %>
       <tr>
-        <td><%= release.name %></td>
+        <td><%= link_to release.name, release %></td>
         <td><%= release.description %></td>
         <td><%= release.date %></td>
-        <td><%= link_to 'Show', release %></td>
         <td><%= link_to 'Edit', edit_release_path(release) %></td>
-        <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +28,6 @@
 <br>
 
 <%= link_to 'New Release', new_release_path %>
+
+</div>
+
