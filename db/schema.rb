@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102055036) do
+ActiveRecord::Schema.define(version: 20150104041050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,12 +67,24 @@ ActiveRecord::Schema.define(version: 20150102055036) do
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["member_id"], name: "index_memberships_on_member_id", using: :btree
 
+  create_table "release_dates", force: true do |t|
+    t.date     "date"
+    t.integer  "release_id"
+    t.string   "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "release_dates", ["date"], name: "index_release_dates_on_date", using: :btree
+  add_index "release_dates", ["release_id"], name: "index_release_dates_on_release_id", using: :btree
+
   create_table "releases", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.date     "date"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "released"
   end
 
   create_table "users", force: true do |t|
@@ -96,4 +108,5 @@ ActiveRecord::Schema.define(version: 20150102055036) do
   add_foreign_key "contributions", "releases"
   add_foreign_key "follows", "artists"
   add_foreign_key "follows", "users"
+  add_foreign_key "release_dates", "releases"
 end
