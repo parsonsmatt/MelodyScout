@@ -26,7 +26,7 @@ class ReleasesControllerTest < ActionController::TestCase
   test "should create release if logged in" do
     log_in_as(@user)
     assert_difference('Release.count') do
-      post :create, release: { date: @release.date, description: @release.description, name: @release.name }
+      post :create, release: { description: @release.description, name: @release.name }
     end
 
     assert_redirected_to release_path(assigns(:release))
@@ -34,7 +34,7 @@ class ReleasesControllerTest < ActionController::TestCase
 
   test "should not create release if not logged in" do
     assert_no_difference('Release.count') do
-      post :create, release: { date: @release.date, description: @release.description, name: @release.name }
+      post :create, release: { description: @release.description, name: @release.name }
     end
 
     assert_redirected_to login_path
@@ -58,12 +58,12 @@ class ReleasesControllerTest < ActionController::TestCase
 
   test "should update release if logged in" do
     log_in_as(@user) 
-    patch :update, id: @release, release: { date: @release.date, description: @release.description, name: @release.name }
+    patch :update, id: @release, release: { description: @release.description, name: @release.name }
     assert_redirected_to release_path(assigns(:release))
   end
 
   test "should not update release if not logged in" do
-    patch :update, id: @release, release: { date: @release.date, description: @release.description, name: @release.name }
+    patch :update, id: @release, release: { description: @release.description, name: @release.name }
     assert_redirected_to login_path
   end
 
