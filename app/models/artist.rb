@@ -21,12 +21,18 @@ class Artist < ActiveRecord::Base
   has_many :follows
   has_many :followers, through: :follows, source: :user
 
+  def release!(release, release_date)
+    followers.each do |user|
+      puts "#{name} sending message to #{user.name} about #{release.name}"
+      user.notify(release, release_date)
+    end
+  end
+
   def add_member(other_artist)
     a=Membership.new(group: self, member: other_artist)
     a.save if a.valid?
   end
 
-  # Really need to remove all references to 'group'...
   def add_group(group)
     a=Membership.new(group: group, member: self)
     a.save if a.valid?

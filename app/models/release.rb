@@ -13,4 +13,12 @@ class Release < ActiveRecord::Base
   def has_artists?
     artists.count > 0
   end
+
+  def release!(release_date)
+    puts "Releasing #{name} in Release"
+    artists.each do |artist|
+      puts "Sending message to #{artist.name}..."
+      artist.release!(self, release_date)
+    end
+  end
 end

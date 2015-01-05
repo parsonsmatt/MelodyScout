@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :activation_token, :reset_token, :notifications
 
   # Callbacks:
   before_save { self.email = email.downcase }
@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
 
   def User.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def notify(release, release_date)
+    puts "#{name} notified of #{release.name} on #{release_date.date}"
   end
 
   def follow(artist)
