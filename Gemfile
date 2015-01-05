@@ -28,6 +28,8 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'whenever', '~> 0.9.4'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
