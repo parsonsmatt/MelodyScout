@@ -5,8 +5,8 @@ application up and running.
 
 ## Todo:
 
-* Test moar
-* Allow Artists to send messages to their followers
+* Figure out a mechanism for recurring tasks
+* Make ReleaseDate class query for all releases happening today
 
 ## Things you may want to cover:
 
