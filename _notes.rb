@@ -1,9 +1,13 @@
+# ReleaseDate starts cascading:
 class ReleaseDate
   def release!
     release.release!(self)
+    released = true
+    save
   end
 end
 
+# Release receives the notification
 class Release
   def release!(release_date)
     artists.each do |artist|
@@ -35,12 +39,12 @@ class Notification
   validates :release_date, presence: true, uniqueness: { scope: :user_id }
 
   has_many :users, through: :notices
-  has_one :notice
+  has_many :notice
 end
 
 class Notice
-  # notification_id
+  # notification_id =>
   # user_id
-  validates :notification_id, presence: true
-  validates :user_id, presence: true
+  validates :notification_id, presence: true, uniqueness: { scope: :user_id }
+  validates :user_id, presence: true, uniqueness: { scope: :user_id }
 end
