@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  release_id: 
+  release_date_id: 
+  notice_id: 
+
+two:
+  release_id: 
+  release_date_id: 
+  notice_id: 

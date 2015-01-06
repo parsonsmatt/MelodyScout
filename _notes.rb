@@ -11,7 +11,7 @@ end
 class Release
   def release!(release_date)
     artists.each do |artist|
-      artist.release!(Notification.create()
+      artist.release!(notifications.build(release_date_id: release_date.id))
     end
   end
 end
@@ -36,10 +36,10 @@ class Notification
   belongs_to :release_date
   
   validates :release_id, presence: true
-  validates :release_date, presence: true, uniqueness: { scope: :user_id }
+  validates :release_date_id, presence: true
 
+  has_many :notices
   has_many :users, through: :notices
-  has_many :notice
 end
 
 class Notice
