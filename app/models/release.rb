@@ -5,6 +5,7 @@ class Release < ActiveRecord::Base
   has_many :artists, through: :contributions
 
   has_many :release_dates
+  has_many :notifications
 
   def add_artist(artist)
     contributions.create(artist_id: artist.try(:id))
@@ -15,10 +16,9 @@ class Release < ActiveRecord::Base
   end
 
   def release!(release_date)
-    puts "Releasing #{name} in Release"
+    notification = self.notifications.create(release_date_id: release_date.id)
     artists.each do |artist|
-      puts "Sending message to #{artist.name}..."
-      artist.release!(self, release_date)
+      artist.release!(notification)
     end
   end
 

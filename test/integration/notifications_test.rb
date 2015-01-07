@@ -6,18 +6,27 @@ class NotificationsTest < ActionDispatch::IntegrationTest
     @release =  Release.create(name: "test")
     @release_date = ReleaseDate.create(release_id: @release.id, date: Date.today, released: false)
     @artist = Artist.create(name: "test artist")
-    @artist.contributions.create(release_id: @release.id)
+    @release.contributions.create(artist_id: @artist.id)
     @user = users(:one)
-    @artist.followers.create(id: @user.id)
+    @user.follows.create(artist_id: @artist.id)
   end
 
   test "ReleaseDate#release!" do
     assert_not @release_date.released?
     assert_difference '@release.upcoming.count', -1 do
-      assert_difference '@user.notifications.count', 1 do
-        @release_date.release!
-      end
+      @release_date.release!
     end
     assert @release_date.released?
   end
+
+  test "User should have notification" do
+    assert_not @release_date.released?
+    assert_includes @release.artists, @artist
+    assert_includes @artist.followers, @user
+    assert_difference '@user.notifications.count', 1 do
+      @release_date.release!
+    end
+    assert @release_date.released?
+  end
+
 end

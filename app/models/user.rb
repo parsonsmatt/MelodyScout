@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
   end
 
   def notify(notification)
-    puts "#{name} notified of #{release.name} on #{release_date.date}"
     self.notices.create(notification_id: notification.id)
   end
 
