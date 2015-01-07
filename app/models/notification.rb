@@ -6,5 +6,5 @@ class Notification < ActiveRecord::Base
   has_many :users, through: :notices
   
   validates :release_id, presence: true, uniqueness: { scope: :release_date_id }
-  validates :release_date_id, presence: true
+  validates :release_date_id, presence: true, uniqueness: { scope: :release_id }
 end

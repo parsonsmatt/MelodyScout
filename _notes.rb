@@ -10,24 +10,25 @@ end
 # Release receives the notification
 class Release
   def release!(release_date)
+    notification = notifications.create(release_date_id: release_date.id)
     artists.each do |artist|
-      artist.release!(notifications.build(release_date_id: release_date.id))
+      artist.release! notification
     end
   end
 end
 
 class Artist
-  def release!(release, release_date)
+  def release!(notification)
     followers.each do |follower|
-      follower.notify(release, release_date)
+      follower.notify(notification)
     end
   end
 end
 
 class User
   has_many :notices
-  def notify(release, release_date)
-    notifications.create(release, release_date)
+  def notify(notification)
+    notices.create(notification_id: notification.id)
   end
 end
 
