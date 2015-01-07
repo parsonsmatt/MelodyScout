@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :activation_token, :reset_token, :notifications
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   # Callbacks:
   before_save { self.email = email.downcase }
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   # Relations:
   has_many :follows, dependent: :destroy
   has_many :following, through: :follows, source: :artist
+
+  # Notices:
+  has_many :notifications, through: :notices
+  has_many :notices, dependent: :destroy
 
   has_secure_password
 

@@ -4,5 +4,7 @@ class ReleaseDate < ActiveRecord::Base
 
   def release!
     release.release!(self) 
+    self.released = true
+    self.save
   end
 end

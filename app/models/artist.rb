@@ -21,10 +21,9 @@ class Artist < ActiveRecord::Base
   has_many :follows
   has_many :followers, through: :follows, source: :user
 
-  def release!(release, release_date)
+  def release!(notification)
     followers.each do |user|
-      puts "#{name} sending message to #{user.name} about #{release.name}"
-      user.notify(release, release_date)
+      user.notify(notification)
     end
   end
 

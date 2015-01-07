@@ -21,4 +21,8 @@ class Release < ActiveRecord::Base
       artist.release!(self, release_date)
     end
   end
+
+  def upcoming
+    release_dates.where(released: false)
+  end
 end
