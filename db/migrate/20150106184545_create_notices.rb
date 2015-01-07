@@ -8,5 +8,6 @@ class CreateNotices < ActiveRecord::Migration
     end
     add_foreign_key :notices, :users
     add_foreign_key :notices, :notifications
+    add_index :notices, [:user_id, :notification_id], unique: true
   end
 end

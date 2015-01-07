@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105193033) do
+ActiveRecord::Schema.define(version: 20150107030428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,30 @@ ActiveRecord::Schema.define(version: 20150105193033) do
   add_index "memberships", ["group_id"], name: "index_memberships_on_group_id", using: :btree
   add_index "memberships", ["member_id"], name: "index_memberships_on_member_id", using: :btree
 
+  create_table "notices", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "notification_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "notices", ["notification_id"], name: "index_notices_on_notification_id", using: :btree
+  add_index "notices", ["user_id", "notification_id"], name: "index_notices_on_user_id_and_notification_id", unique: true, using: :btree
+  add_index "notices", ["user_id"], name: "index_notices_on_user_id", using: :btree
+
+  create_table "notifications", force: true do |t|
+    t.integer  "release_id"
+    t.integer  "release_date_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "notice_id"
+  end
+
+  add_index "notifications", ["notice_id"], name: "index_notifications_on_notice_id", using: :btree
+  add_index "notifications", ["release_date_id", "release_id"], name: "index_notifications_on_release_date_id_and_release_id", unique: true, using: :btree
+  add_index "notifications", ["release_date_id"], name: "index_notifications_on_release_date_id", using: :btree
+  add_index "notifications", ["release_id"], name: "index_notifications_on_release_id", using: :btree
+
   create_table "release_dates", force: true do |t|
     t.date     "date"
     t.integer  "release_id"
@@ -106,5 +130,10 @@ ActiveRecord::Schema.define(version: 20150105193033) do
   add_foreign_key "contributions", "releases"
   add_foreign_key "follows", "artists"
   add_foreign_key "follows", "users"
+  add_foreign_key "notices", "notifications"
+  add_foreign_key "notices", "users"
+  add_foreign_key "notifications", "notices"
+  add_foreign_key "notifications", "release_dates"
+  add_foreign_key "notifications", "releases"
   add_foreign_key "release_dates", "releases"
 end
