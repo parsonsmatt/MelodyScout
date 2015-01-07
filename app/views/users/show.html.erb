@@ -9,6 +9,12 @@
     </section>
   </aside>
   <div class="col-md-4">
+    <h1>Notifications</h1>
+    <ul>
+      <% @user.notifications.each do |notification| %>
+        <li><%= link_to notification.release.name, release_path(notification.release) %></li>
+      <% end %>
+    </ul>
     <h1>Follows</h1>
     <ul>
       <% @user.following.each do |artist| %>
