@@ -47,5 +47,5 @@ class Notice
   # notification_id =>
   # user_id
   validates :notification_id, presence: true, uniqueness: { scope: :user_id }
-  validates :user_id, presence: true, uniqueness: { scope: :user_id }
+  validates :user_id, presence: true, uniqueness: { scope: :notification_id }
 end
