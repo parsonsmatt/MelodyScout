@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107032833) do
+ActiveRecord::Schema.define(version: 20150107050300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,9 +95,9 @@ ActiveRecord::Schema.define(version: 20150107032833) do
     t.date     "date"
     t.integer  "release_id"
     t.string   "country"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "released"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "released",   default: false, null: false
   end
 
   add_index "release_dates", ["date"], name: "index_release_dates_on_date", using: :btree
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20150107032833) do
     t.datetime "updated_at",                        null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.boolean  "admin",             default: false
+    t.boolean  "admin",             default: false, null: false
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
