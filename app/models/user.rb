@@ -33,8 +33,9 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64
   end
 
-  def notify(release, release_date)
+  def notify(notification)
     puts "#{name} notified of #{release.name} on #{release_date.date}"
+    self.notices.create(notification_id: notification.id)
   end
 
   def follow(artist)
