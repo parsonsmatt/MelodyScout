@@ -1,9 +1,9 @@
 require 'test_helper'
 
 class NoticesControllerTest < ActionController::TestCase
-  test "should get destroy" do
+  test "should not get destroy if not logged in" do
     get :destroy
-    assert_response :success
+    assert_redirected_to login_path
   end
 
 end
