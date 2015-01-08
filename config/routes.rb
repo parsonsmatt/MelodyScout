@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'notices/destroy'
-
   # Static pages:
   root 'welcome#index'
   get 'about'     => 'welcome#about'
@@ -26,7 +24,9 @@ Rails.application.routes.draw do
   resources :contributions, only: [:edit, :update]
 
   # User resources:
-  resources :users
+  resources :users do
+    resources :notices, only: [:destroy]
+  end
   resources :follows, only: [:create, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
