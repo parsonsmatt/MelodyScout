@@ -10,15 +10,7 @@
   </aside>
   <div class="col-md-4">
     <h1>Notifications</h1>
-    <ul>
-      <% @user.notices.each do |notice| %>
-        <li>
-          <%= link_to notice.notification.release.name, release_path(notice.notification.release) %> 
-          (<%= notice.notification.release_date.date %>) | 
-          <%= link_to 'Dismiss', user_notice_path(@user, notice), method: :delete, data: { confirmation: 'Are you sure?' }%>
-        </li>
-      <% end %>
-    </ul>
+    <%= render 'notices' %>
     <h1>Follows</h1>
     <ul>
       <% @user.following.each do |artist| %>

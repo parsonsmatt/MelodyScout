@@ -5,6 +5,9 @@ class NoticesController < ApplicationController
   def destroy
     @notice.destroy
     flash[:success] = "Dismissed"
+    respond_to do |format|
+      format.js 
+      format.html { redirect_to user_path(params[:user_id]) }
   end
 
   private
