@@ -1,5 +1,4 @@
 class ReleaseDate < ActiveRecord::Base
-  
   before_create :set_released
   
   validates :release, :date, presence: true
@@ -15,5 +14,6 @@ class ReleaseDate < ActiveRecord::Base
 
     def set_released
       self.released = date < Date.today
+      true
     end
 end
