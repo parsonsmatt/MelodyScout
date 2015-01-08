@@ -12,7 +12,11 @@
     <h1>Notifications</h1>
     <ul>
       <% @user.notifications.each do |notification| %>
-        <li><%= link_to notification.release.name, release_path(notification.release) %> release_date id: <%= notification.release_date.id %><li>
+        <li>
+          <%= link_to notification.release.name, release_path(notification.release) %> 
+          (<%= notification.release_date.date %>) | 
+          <%= link_to 'Dismiss', '#' %>
+        </li>
       <% end %>
     </ul>
     <h1>Follows</h1>
