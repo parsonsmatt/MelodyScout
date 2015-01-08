@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'notices/destroy'
+
   # Static pages:
   root 'welcome#index'
   get 'about'     => 'welcome#about'
