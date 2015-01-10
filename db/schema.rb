@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20150110215915) do
   create_table "release_dates", force: true do |t|
     t.date     "date"
     t.integer  "release_id"
-    t.string   "country"
+    t.string   "region"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "released",   default: false, null: false
