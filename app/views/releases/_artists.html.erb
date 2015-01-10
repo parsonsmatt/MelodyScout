@@ -2,19 +2,11 @@
   <tr>
     <th>Artist</th>
     <th>Role</th>
-    <th colspan='2'></th>
   </tr>
   <% @release.contributions.each do |c| %>
     <tr>
       <td><%= link_to c.artist.name, artist_path(c.artist) %></td>
       <td><%= c.role %></td>
-      <td><%= link_to 'Edit', edit_contribution_path(c) %></td>
-      <td><%= link_to 'Delete', release_contribution_path(@release,c), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
-  <tr>
-    <td colspan='4' class='center'>
-      <%= link_to 'Add Contribution', new_release_contribution_path(@release) %>
-    </td>
-  </tr>
 </table>

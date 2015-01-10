@@ -1,4 +1,7 @@
 <div class='row'>
+  <h1><%= @release.name %></h1>
+</div>
+<div class='row'>
   <div class='col-md-3'>
     <p>
       (eventual picture)
@@ -18,10 +21,9 @@
       </ul>
     </p>
     
-    <%= link_to 'Edit', edit_release_path(@release) %>
+    <%= link_to 'Edit this release', edit_release_path(@release) if logged_in?%>
   </div>
   <div class='col-md-6'>
-    <h1><%= @release.name %></h1>
     <p>
       <strong>Description:</strong>
       <%= @release.description %>
