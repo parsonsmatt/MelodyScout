@@ -80,6 +80,9 @@ class ReleasesController < ApplicationController
       params.require(:release).permit(:name, :description,
                     release_dates_attributes: [
                          :date, :region, :id, :_destroy
+                    ],
+                    contributions_attributes: [
+                          :artist_id, :role, :id, :_destroy
                     ]
                 )
     end

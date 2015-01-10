@@ -1,0 +1,9 @@
+<div class="nested-fields">
+  <li>
+    <%= f.label :artist_id %>
+    <%= f.select :artist_id, Artist.all.collect { |a| [a.name, a.id] } %>
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+    <%= link_to_remove_association "Remove", f %>
+  </li>
+</div>
