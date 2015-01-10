@@ -12,7 +12,7 @@
     <p>
       <strong>Dates:</strong>
       <ul>
-        <%= @release.release_dates.each do |rd| %>
+        <% @release.release_dates.each do |rd| %>
           <li><%= rd.date %> <%= rd.country %></li>
         <% end %>
       </ul>
