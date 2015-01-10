@@ -7,12 +7,8 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  <%= f.fields_for @release.release_dates.build do |rd| %>
-    
-    <%= rd.label :date %>
-    <%= rd.date_field :date %>
-  <% end %>
-
+  Release Dates:
+  
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
   
 <% end %>
