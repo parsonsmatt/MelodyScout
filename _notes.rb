@@ -1,4 +1,36 @@
-# ReleaseDate starts cascading:
+
+# release form:
+# 
+# ---
+#   Release Form!
+#   Name: [text field]
+#   Description: [text area]
+#   Artists:
+#     * Add Artist
+#   Dates:
+#     * Add Date
+# ---
+#
+# After clicking 'Add Date', that li turns into a form
+# 
+# ---
+#   Dates:
+#     * (date picker) [Submit]
+# ---
+#
+# After adding, the form turns into the date, and a new Add Date gets added.
+#
+# ---
+# ...
+#   Dates:
+#     * 1-12-2015, Country: USA
+#     * Add Date
+#
+# 
+
+# daily release methodology
+
+## ReleaseDate starts cascading:
 class ReleaseDate
   def release!
     release.release!(self)
@@ -7,7 +39,7 @@ class ReleaseDate
   end
 end
 
-# Release receives the notification
+## Release receives the notification
 class Release
   def release!(release_date)
     notification = notifications.create(release_date_id: release_date.id)
@@ -44,8 +76,8 @@ class Notification
 end
 
 class Notice
-  # notification_id =>
-  # user_id
+  ## notification_id =>
+  ## user_id
   validates :notification_id, presence: true, uniqueness: { scope: :user_id }
   validates :user_id, presence: true, uniqueness: { scope: :notification_id }
 end
