@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Scheduled tasks:
 gem 'whenever', '~> 0.9.4'
 
+# Better select forms:
+gem 'select2-rails', '~> 3.5.9'
+
 # Nested forms
 gem 'cocoon', '~> 1.2.6'
 
