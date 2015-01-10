@@ -11,9 +11,7 @@
   <div id="release_dates">
     <ul class="nested_form release_dates">
       <%= f.fields_for :release_dates do |rd_fields| %>
-        <li>
-          <%= render 'release_dates_fields', f: rd_fields %>
-        </li>
+        <%= render 'release_date_fields', f: rd_fields %>
       <% end %>
       <li>
         <div class="links">
