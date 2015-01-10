@@ -7,7 +7,23 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
-  Release Dates:
+  <strong>Release Dates:</strong>
+  <ul class="nested_form release_dates">
+    <%= f.fields_for :release_dates do |ff| %>
+      <li class="release_date" id="release_date_<%=ff.object.id%>">
+        <%= ff.label :date %>
+        <%= ff.date_field :date %>
+        <%= ff.label :country %>
+        <%= ff.text_field :country %>
+        <%= ff.hidden_field :id %>
+        <%= ff.label :_destroy %>
+        <%= ff.check_box :_destroy %>
+      </li>
+    <% end %>
+    <li id="add-release-date">
+      <%= link_to 'Add Release Date', '#', id: 'add_release_date' %>
+    </li>
+  </ul>
   
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
   
