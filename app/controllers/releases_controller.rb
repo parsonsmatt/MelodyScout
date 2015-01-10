@@ -77,7 +77,10 @@ class ReleasesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def release_params
-      params.require(:release).permit(:name, :description, :date, 
-                     release_dates_attributes: [:date, :country])
+      params.require(:release).permit(:name, :description,
+                    release_dates_attributes: [
+                         :date, :country, :id, :_destroy
+                    ]
+                )
     end
 end

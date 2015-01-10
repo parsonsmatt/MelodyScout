@@ -3,6 +3,7 @@ class ReleaseDate < ActiveRecord::Base
   
   validates :release, :date, presence: true
   belongs_to :release
+  belongs_to :notification, dependent: :destroy
 
   def release!
     release.release!(self) 
