@@ -79,7 +79,7 @@ class ReleasesController < ApplicationController
     def release_params
       params.require(:release).permit(:name, :description,
                     release_dates_attributes: [
-                         :date, :country, :id, :_destroy
+                         :date, :region, :id, :_destroy
                     ]
                 )
     end

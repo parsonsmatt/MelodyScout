@@ -15,7 +15,7 @@ me = User.create!(name: "Matt Parsons",
              activated_at: Time.zone.now,
              admin: true)
 
-99.times do |n|
+1000.times do |n|
   name = Faker::Name.name
   email = "user#{n+1}@#{Faker::Internet.domain_name}"
   pw = 'password123'
@@ -33,7 +33,7 @@ at = Artist.create!(name: "Alas, Tyranny", description: Faker::Lorem.paragraph)
 tim = Artist.create!(name: "Tim Chester", description: Faker::Lorem.paragraph, individual: true)
 mp = Artist.create!(name: "Matt Parsons", description: Faker::Lorem.paragraph, individual: true)
 
-99.times do |n|
+1000.times do |n|
   Artist.create!(name: "#{Faker::Address.city_suffix} #{Faker::Hacker.ingverb}",
   description: Faker::Lorem.paragraph,
   individual: [true,false].sample)
@@ -50,11 +50,12 @@ me.follow(tim)
 me.follow(mp)
 
 # Release seeding:
-poi = Release.create!(name: "Portal of I", date: 2.years.ago, description: Faker::Lorem.paragraph)
-mon = Release.create!(name: "Monolithic", date: 2.years.ago, description: Faker::Lorem.paragraph)
+poi = Release.create!(name: "Portal of I", description: Faker::Lorem.paragraph)
+mon = Release.create!(name: "Monolithic", description: Faker::Lorem.paragraph)
 
-99.times do |n|
-  Release.create!(name: Faker::App.name, date: Faker::Date.between(10.years.ago, 10.years.from_now), description: Faker::Lorem.paragraph)
+100.times do |n|
+  a=Release.create!(name: Faker::App.name, description: Faker::Lorem.paragraph)
+  a.release_dates.create(date: Faker::Date.between(10.years.ago, 10.years.from_now)
 end
 
 # Contribution seeding:
@@ -62,5 +63,4 @@ at.add_release(mon)
 mp.add_release(mon)
 neo.add_release(poi)
 tim.add_release(poi)
-
 
