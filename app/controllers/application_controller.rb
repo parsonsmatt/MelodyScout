@@ -19,8 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_only
-    flash[:danger] = "Unauthorized action."
-    redirect_to root_url unless current_user.try(:admin?)
+    unless current_user.try(:admin?)
+      flash[:danger] = "Unauthorized action."
+      redirect_to root_url
+    end
   end
 
 end
