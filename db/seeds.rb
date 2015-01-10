@@ -15,7 +15,7 @@ me = User.create!(name: "Matt Parsons",
              activated_at: Time.zone.now,
              admin: true)
 
-1000.times do |n|
+100.times do |n|
   name = Faker::Name.name
   email = "user#{n+1}@#{Faker::Internet.domain_name}"
   pw = 'password123'
@@ -33,7 +33,7 @@ at = Artist.create!(name: "Alas, Tyranny", description: Faker::Lorem.paragraph)
 tim = Artist.create!(name: "Tim Chester", description: Faker::Lorem.paragraph, individual: true)
 mp = Artist.create!(name: "Matt Parsons", description: Faker::Lorem.paragraph, individual: true)
 
-1000.times do |n|
+100.times do |n|
   Artist.create!(name: "#{Faker::Address.city_suffix} #{Faker::Hacker.ingverb}",
   description: Faker::Lorem.paragraph,
   individual: [true,false].sample)
