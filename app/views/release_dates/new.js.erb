@@ -1,0 +1,18 @@
+// app/views/release_dates/new.js.erb
+
+/*
+ *
+ */
+
+console.log("sent from <%= @release.name %>!");
+
+
+$('li#add-date').before(
+  $('<li>').
+    attr('class', 'release_date').
+    <%= fields_for :release_dates do |rd| %>
+      append('<%= rd.label :date %>').
+      append('<%= rd.date_field :date %>')
+    <% end %>
+);
+

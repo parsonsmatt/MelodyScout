@@ -20,8 +20,8 @@
         <%= ff.check_box :_destroy %>
       </li>
     <% end %>
-    <li id="add-release-date">
-      <%= link_to 'Add Release Date', '#', id: 'add_release_date' %>
+    <li id="add-date">
+      <%= link_to 'Add Release Date', new_release_release_date_path(@release), remote: true %>
     </li>
   </ul>
   
