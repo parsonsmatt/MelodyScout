@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   # Releases:
   resources :releases do
     resources :contributions, only: [:new, :create, :destroy]
-    resources :release_dates, only: [:new, :destroy]
   end
   
   # Artists:
