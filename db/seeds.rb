@@ -55,7 +55,7 @@ mon = Release.create!(name: "Monolithic", description: Faker::Lorem.paragraph)
 
 100.times do |n|
   a=Release.create!(name: Faker::App.name, description: Faker::Lorem.paragraph)
-  a.release_dates.create(date: Faker::Date.between(10.years.ago, 10.years.from_now)
+  a.release_dates.create(date: Faker::Date.between(10.years.ago, 10.years.from_now))
 end
 
 # Contribution seeding:
