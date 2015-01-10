@@ -7,6 +7,8 @@ class Release < ActiveRecord::Base
   has_many :release_dates
   has_many :notifications
 
+  accepts_nested_attributes_for :release_dates, allow_destroy: true
+
   def add_artist(artist)
     case artist.class.to_s
       when 'Artist'
