@@ -25,7 +25,9 @@
 #   Dates:
 #     * 1-12-2015, Country: USA
 #     * Add Date
+# ---
 #
+# This always creates new dates and is the simplest to implement.
 # 
 
 # daily release methodology
