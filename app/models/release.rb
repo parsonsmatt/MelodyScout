@@ -8,7 +8,14 @@ class Release < ActiveRecord::Base
   has_many :notifications
 
   def add_artist(artist)
-    contributions.create(artist_id: artist.try(:id))
+    case artist.class.to_s
+      when 'Artist'
+        contributions.create(artist: artist)
+      when 'String'
+        contributions.create(artist: Artist.find_by(name: artist))
+      else 
+        raise ArgumentError.new("Type #{artist.class} unsupported.")
+    end
   end
 
   def has_artists?
