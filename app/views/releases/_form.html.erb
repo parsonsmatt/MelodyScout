@@ -8,22 +8,20 @@
   <%= f.text_area :description %>
 
   <strong>Release Dates:</strong>
-  <ul class="nested_form release_dates">
-    <%= f.fields_for :release_dates do |ff| %>
-      <li class="release_date" id="release_date_<%=ff.object.id%>">
-        <%= ff.label :date %>
-        <%= ff.date_field :date %>
-        <%= ff.label :country %>
-        <%= ff.text_field :country %>
-        <%= ff.hidden_field :id %>
-        <%= ff.label :_destroy %>
-        <%= ff.check_box :_destroy %>
+  <div id="release_dates">
+    <ul class="nested_form release_dates">
+      <%= f.fields_for :release_dates do |rd_fields| %>
+        <li>
+          <%= render 'release_dates_fields', f: rd_fields %>
+        </li>
+      <% end %>
+      <li>
+        <div class="links">
+          <%= link_to_add_association 'Add Release Date', f, :release_dates %>
+        </div>
       </li>
-    <% end %>
-    <li id="add-date">
-      <%= link_to 'Add Release Date', new_release_release_date_path(@release), remote: true %>
-    </li>
-  </ul>
+    </ul>
+  </div>
   
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
   
