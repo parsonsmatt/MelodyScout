@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.day do
-  # notify!
+  runner 'ReleaseDate.daily_release'
 end
