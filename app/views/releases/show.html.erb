@@ -10,8 +10,12 @@
     </p>
 
     <p>
-      <strong>Date:</strong>
-      <%= @release.release_dates.try(:first).try(:date) %>
+      <strong>Dates:</strong>
+      <ul>
+        <%= @release.release_dates.each do |rd| %>
+          <li><%= rd.date %> <%= rd.country %></li>
+        <% end %>
+      </ul>
     </p>
     
     <%= link_to 'Edit', edit_release_path(@release) %>

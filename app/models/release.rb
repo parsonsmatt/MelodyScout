@@ -1,11 +1,11 @@
 class Release < ActiveRecord::Base
   validates :name, presence: true
 
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
   has_many :artists, through: :contributions
 
-  has_many :release_dates
-  has_many :notifications
+  has_many :release_dates, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   accepts_nested_attributes_for :release_dates, allow_destroy: true
 

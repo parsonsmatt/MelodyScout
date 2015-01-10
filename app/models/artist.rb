@@ -2,7 +2,7 @@ class Artist < ActiveRecord::Base
   validates :name, presence: true
   
   # Releases:
-  has_many :contributions
+  has_many :contributions, dependent: :destroy
   has_many :releases, through: :contributions
 
   # Members:
@@ -18,7 +18,7 @@ class Artist < ActiveRecord::Base
   has_many :groups, through: :group_relations
 
   # Followers:
-  has_many :follows
+  has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
 
   def release!(notification)
