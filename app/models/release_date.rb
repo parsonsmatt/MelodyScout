@@ -1,7 +1,7 @@
 class ReleaseDate < ActiveRecord::Base
   before_create :set_released
   
-  validates :release, :date, presence: true
+  validates :date, presence: true
   belongs_to :release
   belongs_to :notification, dependent: :destroy
 

@@ -31,11 +31,11 @@ class ReleasesController < ApplicationController
   # POST /releases.json
   def create
     @release = Release.new(release_params)
-
+    
     respond_to do |format|
       if @release.save
         flash[:succes] = "Release successfully created!"
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
+        format.html { redirect_to @release }
         format.json { render :show, status: :created, location: @release }
       else
         format.html { render :new }
@@ -79,10 +79,10 @@ class ReleasesController < ApplicationController
     def release_params
       params.require(:release).permit(:name, :description,
                     release_dates_attributes: [
-                         :date, :region, :id, :_destroy
+                         :release_id, :date, :region, :id, :_destroy
                     ],
                     contributions_attributes: [
-                          :artist_id, :role, :id, :_destroy
+                          :release_id, :artist_id, :role, :id, :_destroy
                     ]
                 )
     end
