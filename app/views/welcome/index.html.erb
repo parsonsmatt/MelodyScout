@@ -2,11 +2,23 @@
   <h1>TellMe</h1>
 </div>
 <div class="row">
-  <aside class="col-md-4">
-    <h2>Recent Updates:</h2>
-  </aside>
-  <div class="col-md-4">
+  <div class="col-md-4 col-md-push-4">
     <h2>Welcome to TellMe!</h2>
     <p>TellMe is a simple way to follow your favorite artists and hear about their new releases. Artists aren't on the site? You can create them! Releases not on the site? You can create them! TellMe is a community driven database first and foremost.</p>
+  </div>
+  <aside class="col-md-4 col-md-pull-4">
+    <h2>Recent Updates:</h2>
+    <div class="recent-updates">
+      <ul>
+        <% @updates.each do |update| %>
+          <li>
+          <%= link_to update[:name], (update[:klass] == Artist ? artist_path(update[:id]) : release_path(update[:id])) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </aside>
+  <div class="col-md-3">
+    <h2>i guess google ads or something</h2>
   </div>
 </div>
