@@ -5,8 +5,17 @@ application up and running.
 
 ## Todo:
 
-* Figure out a mechanism for recurring tasks
-* Make ReleaseDate class query for all releases happening today
+* Clean up the UI/UX:
+  * Follow/unfollow should work via AJAX
+  * Releases
+    * Create new Artist from Contribution forms
+  * Artists
+    * Create new Release from Contribution forms
+* Currently, Notices build up for Users. They have a dismissal feature.
+  1. User `has_a` NoticeConfiguration which controls how the user gets notified.
+    * Email? SMS?
+    * Daily? Weekly? Monthly?
+    * Every [period of time] [contact] user about [notices] 
 
 ## Things you may want to cover:
 
