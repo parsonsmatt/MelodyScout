@@ -9,7 +9,7 @@
          }.each do |text, item| %>
         <tr>
           <td><strong><%= text %>:</strong></td>
-          <td><%= item %></td>
+          <td id="sidebar-<%=text.downcase%>"><%= item %></td>
         </tr>
       <% end %>
     </table>

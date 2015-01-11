@@ -2,19 +2,23 @@ class FollowsController < ApplicationController
   before_action :logged_in_user
 
   def create
-    artist = Artist.find(params[:artist_id])
-    current_user.follow(artist)
-    respond_to do |format|
-      format.html { redirect_to artist }
-      format.js
+    @artist = Artist.find(params[:artist_id])
+    @follow = current_user.follows.build
+    @follow.artist = @artist
+    if @follow.save
+      respond_to do |format|
+        format.html { redirect_to artist }
+        format.js
+      end
     end
   end
 
   def destroy
-    artist = Follow.find(params[:id]).artist
-    current_user.unfollow(artist)
+    @follow = Follow.find(params[:id])
+    @artist = @follow.artist
+    @follow.destroy
     respond_to do |format|
-      format.html { redirect_to artist }
+      format.html { redirect_to @artist }
       format.js
     end
   end
