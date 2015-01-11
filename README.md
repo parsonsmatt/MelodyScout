@@ -15,6 +15,10 @@ application up and running.
     * Email? SMS?
     * Daily? Weekly? Monthly?
     * Every [period of time] [contact] user about [notices] 
+* Figure out monetization
+  * Google AdSense (text ads only)
+  * Amazon affiliate links (query from release+album name)
+  * Create necessary roles for subscription service
 
 ## Things you may want to cover:
 
