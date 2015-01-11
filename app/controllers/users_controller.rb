@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(secure_params)
     if @user.save
       @user.send_activation_email
-      flash[:success] = "Welcome to TellMe!"
+      flash[:success] = "Welcome to MelodyScout!"
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
