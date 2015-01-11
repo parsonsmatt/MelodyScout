@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :contributions, only: [:edit, :update]
 
   # User resources:
-  resources :users do
+  resources :users, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :notices, only: [:destroy]
   end
   resources :follows, only: [:create, :destroy]
