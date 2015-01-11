@@ -21,6 +21,9 @@ class Artist < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_many :followers, through: :follows, source: :user
 
+  # Nested Attributes:
+  accepts_nested_attributes_for :contributions, allow_destroy: true
+
   def release!(notification)
     followers.each do |user|
       user.notify(notification)
