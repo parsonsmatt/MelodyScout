@@ -6,7 +6,6 @@ application up and running.
 ## Todo:
 
 * Clean up the UI/UX:
-  * Follow/unfollow should work via AJAX
   * Releases
     * Create new Artist from Contribution forms
   * Artists
