@@ -1,17 +1,10 @@
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for(@user) %>  
-        <%= @user.name %>
-      </h1>
-      <p><%= @user.email %></p>
-    </section>
-  </aside>
-  <div class="col-md-4">
-    <h1>Notifications</h1>
+  <h1>Profile</h1>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-push-3">
     <%= render 'notices' %>
-    <h1>Follows</h1>
+    <h2>Follows</h2>
     <ul>
       <% @user.following.each do |artist| %>
         <li><%= link_to artist.name, artist_path(artist) %></li>
@@ -21,4 +14,6 @@
       <p>Is Not following anyone yet!</p>
     <% end %>
   </div>
+  <%= render 'sidebar' %>
+  <%= render 'shared/ads' %>
 </div>

@@ -2,35 +2,35 @@
   <h1><%= @release.name %></h1>
 </div>
 <div class='row'>
-  <div class='col-md-3'>
-    <p>
-      (eventual picture)
-    </p>
-
-    <p>
-      <strong>Name:</strong>
-      <%= @release.name %>
-    </p>
-
-    <p>
-      <strong>Dates:</strong>
-      <ul>
-        <% @release.release_dates.each do |rd| %>
-          <li><%= rd.date %> <%= rd.region %></li>
-        <% end %>
+  <div class='col-md-6 col-md-push-3'>
+    <div class='tabpanel'>
+      <!-- Nav Tabs -->
+      <ul id='release-tabs' class='nav nav-tabs' role='tablist'>
+        <li role='presentation' class='active'>
+          <a href='#information' aria-controls='information' role='tab' data-toggle='tab'>Information</a>
+        </li>
+        <li role='presentation' class=''>
+          <a href='#artists' aria-controls='artists' role='tab' data-toggle='tab'>Artists</a>
+        </li>
       </ul>
-    </p>
-    
-    <%= link_to 'Edit this release', edit_release_path(@release) if logged_in?%>
+      <!-- Tab Panels -->
+      <div class='tab-content'>
+        <div role='tabpanel' class='tab-pane fade in active' id='information'>
+          <ul>
+          <% @release.release_dates.each do |rd| %>
+            <li><%= rd.date %> <%= rd.region %></li>
+          <% end %>
+        </ul>
+        </div>
+        <div role='tabpanel' class='tab-pane fade' id='artists'>
+          <%= render 'artists' %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class='col-md-6'>
-    <p>
-      <strong>Description:</strong>
-      <%= @release.description %>
-    </p>
-    
-    <%= render 'artists' if @release.has_artists? %>
-
+  
+  <%= render 'sidebar' %> 
+  <%= render 'shared/ads' %>
   </div>
 </div>
 

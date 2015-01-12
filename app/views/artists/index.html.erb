@@ -1,30 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class='row'>
+  <h1 class='title'>Artists</h1>
+</div>
+<div class='row'>
+  <div class='col-md-6 col-md-push-3'>
+    <h2>All Artists:</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Followers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @artists.each do |artist| %>
+          <tr>
+            <td><%= link_to artist.name, artist %></td>
+            <td><%= artist.description %></td>
+            <td><%= artist.followers.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<h1>Listing Artists</h1>
-<%= will_paginate %>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Followers</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+    <br>
 
-  <tbody>
-    <% @artists.each do |artist| %>
-      <tr>
-        <td><%= link_to artist.name, artist %></td>
-        <td><%= artist.description %></td>
-        <td><%= artist.followers.count %></td>
-        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <%= link_to 'New Artist', new_artist_path %>
 
-<br>
-
-<%= link_to 'New Artist', new_artist_path %>
+  </div>
+  <%= render 'filter' %>
+  <%= render 'shared/ads' %>
+</div>

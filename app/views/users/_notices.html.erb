@@ -1,3 +1,4 @@
+<h2>Notifications</h2>
 <ul class='notice-list'>
   <% @user.notices.each do |notice| %>
     <li class='notice' id='notice_<%= notice.id %>'>
@@ -5,5 +6,8 @@
       (<%= notice.notification.release_date.date %>) | 
       <%= link_to 'Dismiss', user_notice_path(@user, notice), remote: true, method: :delete, data: { confirmation: 'Are you sure?' }%>
     </li>
+  <% end %>
+  <% unless @user.notices.any? %>
+    <li>No notifications!</li>
   <% end %>
 </ul>

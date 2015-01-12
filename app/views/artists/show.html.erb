@@ -3,12 +3,31 @@
 </div>
 <div class='row'>
   <div class='col-md-6 col-md-push-3'>
-    
-    <%= render 'releases' %>
 
-    <%= render (@artist.group? ? 'members' : 'groups') %>
+    <div class='tabpanel'>
+      <!-- Nav Tabs -->
+      <ul id='artist-tabs' class='nav nav-tabs' role='tablist'>
+        <li role='presentation' class='active'>
+          <a href='#contributions' aria-controls='contributions' role='tab' data-toggle='tab'>Contributions</a>
+        </li>
+        <li role='presentation' class=''>
+          <a href='#associations' aria-controls='associations' role='tab' data-toggle='tab'>Associations</a>
+        </li>
+      </ul>
+      <!-- Tab Panels -->
+      <div class='tab-content'>
+        <div role='tabpanel' class='tab-pane fade in active' id='contributions'>
+          <%= render 'releases' %>
+        </div>
+        <div role='tabpanel' class='tab-pane fade' id='associations'>
+          <%= render (@artist.group? ? 'members' : 'groups') %>
+        </div>
+      </div>
+    </div>
+
     
   </div>
   <%= render 'sidebar' %>
   <%= render 'shared/ads' %>
 </div>
+
