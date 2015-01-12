@@ -6,11 +6,16 @@ application up and running.
 ## Todo:
 
 * Before Deploying Beta:
-  * Clean up the UI/UX:
+  * Clean up the UX:
     * Releases
       * Create new Artist from Contribution forms
     * Artists
       * Create new Release from Contribution forms
+  * Clean up the UI:
+    * Artist and Release both need:
+      * Sensible Index (with search)
+      * Sensible Show (with tabs)
+    * Header navbar needs search
 * After Deploying Beta:
   * Currently, Notices build up for Users. They have a dismissal feature.
     1. User `has_a` NoticeConfiguration which controls how the user gets notified.
