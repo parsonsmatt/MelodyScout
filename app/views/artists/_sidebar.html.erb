@@ -1,18 +1,19 @@
-<aside class='col-md-3'>
-    <table class='table'>
-      <% { "Name" => @artist.name,
-           "Picture" => image_tag("artist.png", size: "50x50", alt: @artist.name),
-           "Description" => @artist.description,
-           "Followers" => @artist.followers.count,
-           "Releases" => @artist.releases.count,
-           "Associations" => @artist.members.count+@artist.groups.count
-         }.each do |text, item| %>
-        <tr>
-          <td><strong><%= text %>:</strong></td>
-          <td id="sidebar-<%=text.downcase%>"><%= item %></td>
-        </tr>
-      <% end %>
-    </table>
-    <%= render 'follow_form' if logged_in? %>
-    <%= link_to 'Edit', edit_artist_path(@artist) if logged_in? %>
+<aside class='col-md-3 col-md-pull-6'>
+  <h2>Profile</h2>
+  <table class='table'>
+    <% { "Name" => @artist.name,
+         "Picture" => image_tag("artist.png", size: "50x50", alt: @artist.name),
+         "Description" => @artist.description,
+         "Followers" => @artist.followers.count,
+         "Releases" => @artist.releases.count,
+         "Associations" => @artist.members.count+@artist.groups.count
+       }.each do |text, item| %>
+      <tr>
+        <td><strong><%= text %>:</strong></td>
+        <td id="sidebar-<%=text.downcase%>"><%= item %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= render 'follow_form' if logged_in? %>
+  <%= link_to 'Edit', edit_artist_path(@artist) if logged_in? %>
 </aside>
