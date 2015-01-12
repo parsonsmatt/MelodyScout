@@ -2,14 +2,21 @@
   <div class="col-md-8 col-md-offset-2">
     <h1>Listing Releases</h1>
 
-    <%= link_to 'New Release', new_release_path %>
-
+    <h2><%= link_to 'New Release', new_release_path %></h2>
+    <div class="row">
     <% @releases.each do |release| %>
       <div class="col-md-3">
-        <h2><%= link_to release.name, release %></h2>
-        <p><%= release.description %></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= link_to release.name, release %>
+          </div>
+          <div class="panel-body">
+            <p><%= release.description %></p>
+          </div>
+        </div>
       </div>
     <% end %>
+  </div>
   </div>
 </div>
 
