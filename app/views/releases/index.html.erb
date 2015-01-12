@@ -4,28 +4,12 @@
 
     <%= link_to 'New Release', new_release_path %>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @releases.each do |release| %>
-          <tr>
-            <td><%= link_to release.name, release %></td>
-            <td><%= release.description %></td>
-            <td><%= release.release_dates.try(:first).try(:date) %></td>
-            <td><%= link_to 'Destroy', release, method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
+    <% @releases.each do |release| %>
+      <div class="col-md-3">
+        <h2><%= link_to release.name, release %></h2>
+        <p><%= release.description %></p>
+      </div>
+    <% end %>
   </div>
 </div>
 
