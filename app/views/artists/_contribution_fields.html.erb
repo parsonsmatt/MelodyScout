@@ -1,7 +1,7 @@
 <div class="nested-fields">
   <li>
     <%= f.label :release_id %>
-    <%= f.select :release_id, Release.all.collect {|a| [a.name, a.id]} %>
+    <%= f.select :release_id, ['','']+ Release.all.collect {|a| [a.name, a.id]}, {}, class: 'select-release' %>
     <%= f.label :role %>
     <%= f.text_field :role %>
     <%= link_to_remove_association "Remove", f %>

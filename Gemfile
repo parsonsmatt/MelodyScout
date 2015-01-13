@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'whenever', '~> 0.9.4'
 
 # Better select forms:
-gem 'select2-rails', '~> 3.5.9'
+gem 'selectize-rails', '~> 0.11.2'
 
 # Nested forms
 gem 'cocoon', '~> 1.2.6'
