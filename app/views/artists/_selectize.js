@@ -1,23 +1,26 @@
 $('document').ready(function() {
     var seConfig = {
-        valueField: 'id',
-        labelField: 'name',
-        create: function(input) {
+        create: function(input, cb) {
+            // Something was created!
+            // Send request to server
+            // Response will contain ID of newly created release
+            // 'value' = artist_id
+            // 'text' = input
+
+            
             return {
-                'id': 0,
-                'name': input
+                'value': 0,
+                'text': input
             }
         },
         createOnBlur: true,
         searchField: 'name',  
-        delimiter: ''  
     };
 
     $('.select-release').selectize(seConfig);
 
     $('.add_fields').click(function() { 
         setTimeout(function() {
-            console.log('hey');
             $('select.select-release').not('.selectized').selectize(seConfig);
         }, 1); 
     });
