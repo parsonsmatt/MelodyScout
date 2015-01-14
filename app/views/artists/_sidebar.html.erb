@@ -2,7 +2,7 @@
   <h2>Profile</h2>
   <table class='table'>
     <% { "Name" => @artist.name,
-         "Picture" => image_tag("artist.png", size: "50x50", alt: @artist.name),
+         #"Picture" => image_tag("artist.png", size: "50x50", alt: @artist.name),
          "Description" => @artist.description,
          "Followers" => @artist.followers.count,
          "Releases" => @artist.releases.count,
