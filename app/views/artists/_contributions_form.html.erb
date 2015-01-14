@@ -1,0 +1,13 @@
+<div id="contributions">
+    <strong>Contributions:</strong>
+    <ul class="nested_form contributions">
+        <%= f.fields_for :contributions do |ff| %>
+            <%= render 'contribution_fields', f: ff %>
+        <% end %>
+        <li>
+        <div class="links">
+            <%= link_to_add_association 'Add Contribution', f, :contributions %>
+        </div>
+        </li>
+    </ul>
+</div>
