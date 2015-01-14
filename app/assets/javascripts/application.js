@@ -17,4 +17,4 @@
 //= require_tree .
 //= require turbolinks
 //= require cocoon
-//= require select2
+//= require selectize

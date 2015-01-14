@@ -1,7 +1,7 @@
 <div class="nested-fields">
   <li>
     <%= f.label :artist_id %>
-    <%= f.select :artist_id, Artist.all.collect { |a| [a.name, a.id] } %>
+    <%= f.select :artist_id, Artist.all.collect { |a| [a.name, a.id] }, {}, class: 'selectize-me' %>
     <%= f.label :role %>
     <%= f.text_field :role %>
 
