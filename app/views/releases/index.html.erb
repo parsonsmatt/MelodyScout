@@ -1,22 +1,27 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
     <h1>Listing Releases</h1>
+</div>
+<div class='row'>
+    <div class="col-md-8 col-md-offset-2">
 
-    <h2><%= link_to 'New Release', new_release_path %></h2>
-    <div class="row">
-    <% @releases.each do |release| %>
-      <div class="col-md-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <%= link_to release.name, release %>
-          </div>
-          <div class="panel-body">
-            <p><%= release.description %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  </div>
+        <h2><%= link_to 'New Release', new_release_path %></h2>
+
+        <table class='table'>
+            <theader>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            </theader>
+            <tbody>
+            <% @releases.each do |release| %>
+                <tr>
+                    <td><%= link_to release.name, release %></td>
+                    <td><%= release.description %></td>
+                </tr>
+            <% end %>
+        </table>
+    </div>
+    <%= render 'shared/ads' %>
 </div>
 
