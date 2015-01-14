@@ -2,7 +2,7 @@
   <h2>Release</h2>
   <table class='table'>
     <% { "Name" => @release.name,
-         "Picture" => image_tag("release.png", size: "50x50", alt: @release.name),
+         #"Picture" => image_tag("release.png", size: "50x50", alt: @release.name),
          "Description" => @release.description,
          "Date" => @release.release_dates.try(:first).try(:date) || 'None yet',
          "Artists" => @release.artists.count,
