@@ -1,19 +1,19 @@
 <div class="row">
-  <h1>Profile</h1>
+    <h1>Profile</h1>
 </div>
 <div class="row">
-  <div class="col-md-6 col-md-push-3">
-    <%= render 'notices' %>
-    <h2>Follows</h2>
-    <ul>
-      <% @user.following.each do |artist| %>
-        <li><%= link_to artist.name, artist_path(artist) %></li>
-      <% end %>
-    </ul>
-    <% if @user.following.empty? %>
-      <p>Is Not following anyone yet!</p>
-    <% end %>
-  </div>
-  <%= render 'sidebar' %>
-  <%= render 'shared/ads' %>
+    <div class="col-md-8 col-md-push-2">
+        <%= render 'notices' %>
+        <h2>Follows</h2>
+        <ul>
+            <% @user.following.each do |artist| %>
+                <li><%= link_to artist.name, artist_path(artist) %></li>
+            <% end %>
+            <% if @user.following.empty? %>
+                <li>Not following anyone yet!</li>
+            <% end %>
+        </ul>
+    </div>
+    <%= render 'sidebar' %>
+    <%= render 'shared/ads' %>
 </div>
