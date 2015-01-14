@@ -1,14 +1,20 @@
-<h1>Editing Contribution</h1>
+<div class='row'>
+    <h1>Editing Contribution</h1>
+</div>
+<div class='row'>
+    <div class='col-md-8 col-md-push-2'>
+        <h2>between <%= @contribution.artist.name %> and <%= @contribution.release.name %></h2>
 
-<h2>between <%= @contribution.artist.name %> and <%= @contribution.release.name %></h2>
+        <%= form_for @contribution do |f| %>
 
-<%= form_for @contribution do |f| %>
- 
-  <%= f.label :role %>
-  <%= f.text_field :role %>
+            <%= f.label :role %>
+            <%= f.text_field :role %>
 
-  <%= f.submit 'Submit', class: 'btn btn-primary' %>
+            <%= f.submit 'Submit', class: 'btn btn-primary' %>
 
-<% end %>
+        <% end %>
+    </div>
+    <%= render 'shared/ads' %>
+</div>
 
 
