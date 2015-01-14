@@ -40,4 +40,5 @@ MelodyScout.selectizeConfigurations = {
     }
 };
 
-$(MelodyScout.selectizePages);
+$(document).on('ready page:load', MelodyScout.selectizePages);
+
