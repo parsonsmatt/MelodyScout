@@ -1,5 +1,6 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :edit, :update, :destroy]
+  before_action :get_form_url, only: [:new, :edit]
   before_action :set_artist, only: [:new, :create, :update, :destroy]
   before_action :set_release, only: [:new, :create, :update]
   before_action :set_return, only: [:new, :edit]
@@ -101,4 +102,8 @@ class ContributionsController < ApplicationController
       params[:release_id] ? release_path(set_release) : artist_path(@artist)
     end
 
+    def get_form_url
+      @form_url = params[:release_id] ? release_contributions_path(params[:release_id]) 
+                                      : artist_contributions_path(params[:artist_id])
+    end
 end
