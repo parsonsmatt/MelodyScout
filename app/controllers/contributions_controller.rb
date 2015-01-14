@@ -1,6 +1,6 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: [:show, :edit, :update, :destroy]
-  before_action :get_form_url, only: [:new, :edit]
+  before_action :get_form_url, only: [:new]
   before_action :set_artist, only: [:new, :create, :update, :destroy]
   before_action :set_release, only: [:new, :create, :update]
   before_action :set_return, only: [:new, :edit]
