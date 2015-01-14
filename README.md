@@ -5,12 +5,11 @@ application up and running.
 
 ## Todo:
 
-* Before Deploying Beta:
-  * Clean up the UI:
-    * Artist and Release both need:
-      * Sensible Index (with search)
-      * Sensible Show (with tabs)
-    * Header navbar needs search
+* Deploying Beta:
+  * Configure Capistrano
+  * Setup server
+    * nginx
+    * Passenger
 * After Deploying Beta:
   * Clean up the UX:
     * Releases
