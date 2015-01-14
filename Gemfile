@@ -54,6 +54,5 @@ group :test do
 end
 
 group :production do
-  gem 'unicorn', '4.8.3'
-  gem 'rails_12factor'
+  gem 'passenger', '~> 5.0'
 end
