@@ -1,9 +1,21 @@
-<h1>New Group Membership:</h1>
-<h2>for <%= @member.name %></h2>
+<div class='row'>
+    <h1>New Group Membership:</h1>
+</div>
+<div class='row'>
+    <div class='col-md-8 col-md-push-2'>
+        <h2>for <%= @member.name %></h2>
 
-<%= form_for(@member.member_relations.build, url: artist_groups_path) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.label :group_id %>
-  <%= f.select :group_id, Artist.where(individual: false).collect { |g| [g.name, g.id] } %>
-  <%= f.submit 'Submit', class: 'btn btn-primary' %>
-<% end %>
+        <%= form_for(@member.member_relations.build, url: artist_groups_path) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :group_id %>
+            <%= f.select :group_id, Artist.where(individual: false).collect { |g| [g.name, g.id] }, {}, class: 'selectize-me' %>
+
+            <%= f.label :role %>
+            <%= f.text_field :role %>
+            <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <% end %>
+        <br>
+        <%= link_to 'Go back', artist_path(@member) %>
+    </div>
+    <%= render 'shared/ads' %>
+</div>
