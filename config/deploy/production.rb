@@ -17,7 +17,6 @@ role :db,  %w{melodyscout@beta.melodyscout.com}
 
 server 'beta.melodyscout.com', user: 'melodyscout', roles: %w{web app db}
 
-
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
@@ -25,15 +24,15 @@ server 'beta.melodyscout.com', user: 'melodyscout', roles: %w{web app db}
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+set :ssh_options, {
+    keys: %w(/home/matt/.ssh/id_rsa),
+    forward_agent: true,
+    auth_methods: %w(publickey password)
+}
 #
 # And/or per server (overrides global)
 # ------------------------------------
-# server 'beta.melodyscout.com',
+# server 'example.com',
 #   user: 'user_name',
 #   roles: %w{web app},
 #   ssh_options: {
