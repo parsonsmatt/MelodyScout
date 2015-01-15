@@ -78,4 +78,5 @@ staging:
 production:
   <<: *default
   database: MelodyScout_production
+  username: melodyscout
   #password: <%= ENV['MELODYSCOUT_DATABASE_PASSWORD'] %>
