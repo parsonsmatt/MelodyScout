@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.3.5'
 
-set :application, 'MelodyScout'
+set :application, 'melodyscout'
 set :repo_url, 'git@github.com:melodyscout/melodyscout.git'
 
 set :user, "melodyscout"
