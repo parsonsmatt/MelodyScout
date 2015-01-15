@@ -79,4 +79,5 @@ production:
   <<: *default
   database: MelodyScout_production
   username: melodyscout
+  host: localhost
   #password: <%= ENV['MELODYSCOUT_DATABASE_PASSWORD'] %>
