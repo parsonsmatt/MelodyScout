@@ -38,6 +38,7 @@ gem 'cocoon', '~> 1.2.6'
 group :development do
     gem 'capistrano-rails', '~> 1.1.2'
     gem 'capistrano-rvm', '~> 0.1.2', require: false
+    gem 'capistrano-passenger'
 end
 
 group :development, :test do

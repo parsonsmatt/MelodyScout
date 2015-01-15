@@ -1,5 +1,3 @@
-set :stage, :staging
-
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary server in each group
@@ -17,9 +15,7 @@ role :db,  %w{melodyscout@beta.melodyscout.com}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'beta.melodyscout.com', user: 'melodyscout', roles: %w{web app db}, 
-
-set :rails_env, :staging
+server 'beta.melodyscout.com', user: 'melodyscout', roles: %w{web app db}
 
 # Custom SSH Options
 # ==================
@@ -30,7 +26,7 @@ set :rails_env, :staging
 # --------------
 set :ssh_options, {
     keys: %w(/home/matt/.ssh/id_rsa),
-    forward_agent: false,
+    forward_agent: true,
     auth_methods: %w(publickey password)
 }
 #
