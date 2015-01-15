@@ -2,7 +2,7 @@
 lock '3.3.5'
 
 set :application, 'MelodyScout'
-set :repo_url, 'git@github.com:parsonsmatt/melodyscout.git'
+set :repo_url, 'git@github.com:melodyscout/melodyscout.git'
 
 set :user, "melodyscout"
 set :use_sudo, false
