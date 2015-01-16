@@ -55,5 +55,5 @@ group :test do
 end
 
 group :production do
-    gem 'passenger', '5.0.0beta2'
+  gem 'passenger', '5.0.0beta2'
 end
