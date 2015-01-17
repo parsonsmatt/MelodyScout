@@ -51,4 +51,5 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
+  gem 'rack-cache'
 end
