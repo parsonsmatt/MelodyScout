@@ -37,4 +37,25 @@ class ArtistReleaseRelationshipTest < ActionDispatch::IntegrationTest
       @r1.add_artist(@a1)
     end
   end
+
+  test "should add artist string" do
+    name = @a1.name
+    assert_equal String, name.class
+    assert_difference '@r1.artists.count', 1 do
+      @r1.add_artist name
+    end
+    assert_includes @r1.artists, @a1
+  end
+
+  test "should fail when artist not there" do
+    assert_no_difference '@r1.artists.count' do
+      @r1.add_artist "i am not in the db"
+    end
+  end
+
+  test "should raise argument error if neither artist nor string" do
+    assert_raise ArgumentError do
+      @r1.add_artist 234
+    end
+  end
 end
