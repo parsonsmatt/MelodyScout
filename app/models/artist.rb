@@ -2,7 +2,7 @@ class Artist < ActiveRecord::Base
   validates :name, presence: true
   
   # Releases:
-  has_many :contributions, dependent: :destroy
+  has_many :contributions, dependent: :destroy, inverse_of: :artist
   has_many :releases, through: :contributions
 
   # Members:
