@@ -24,14 +24,6 @@ ActiveRecord::Schema.define(version: 20150110215915) do
     t.boolean  "individual"
   end
 
-  create_table "artists_releases", id: false, force: true do |t|
-    t.integer "artist_id",  null: false
-    t.integer "release_id", null: false
-  end
-
-  add_index "artists_releases", ["artist_id", "release_id"], name: "index_artists_releases_on_artist_id_and_release_id", using: :btree
-  add_index "artists_releases", ["release_id", "artist_id"], name: "index_artists_releases_on_release_id_and_artist_id", using: :btree
-
   create_table "contributions", force: true do |t|
     t.integer  "artist_id"
     t.integer  "release_id"
