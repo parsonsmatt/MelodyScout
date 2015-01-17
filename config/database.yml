@@ -16,6 +16,7 @@ default: &default
 
 development:
   <<: *default
+  username: matt
   database: MelodyScout_development
 
   # The specified database role being used to connect to postgres.
