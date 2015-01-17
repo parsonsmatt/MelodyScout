@@ -9,7 +9,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: melodyscout
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -74,10 +73,12 @@ test:
 #
 staging:
   <<: *default
+  username: melodyscout
   database: MelodyScout_production
   #password: <%= ENV['MELODYSCOUT_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
+  username: melodyscout
   database: MelodyScout_production
   #password: <%= ENV['MELODYSCOUT_DATABASE_PASSWORD'] %>
