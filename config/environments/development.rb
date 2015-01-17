@@ -15,7 +15,7 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host }
 
@@ -51,8 +51,8 @@ Rails.application.configure do
     address:                'smtp.gmail.com',
     port:                   '587',
     authentication:         :plain,
-    user_name:              ENV['GMAIL_USERNAME'],
-    password:               ENV['GMAIL_PASSWORD'],
+    user_name:              'melodyscoutweb@gmail.com',
+    password:               Rails.application.secrets.gmail_password,
     enable_starttles_auto:  true,
     domain:                 'localhost:3000'
   }
