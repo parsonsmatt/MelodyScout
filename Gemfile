@@ -35,12 +35,6 @@ gem 'selectize-rails', '~> 0.11.2'
 # Nested forms
 gem 'cocoon', '~> 1.2.6'
 
-group :development do
-    gem 'capistrano-rails', '~> 1.1.2'
-    gem 'capistrano-rvm', '~> 0.1.2', require: false
-    gem 'capistrano-passenger'
-end
-
 group :development, :test do
   gem 'byebug'
   gem 'faker', '~> 1.4.3'
@@ -55,6 +49,6 @@ group :test do
 end
 
 group :production do
-  gem 'rails-12factor'
+  gem 'rails_12factor'
   gem 'unicorn'
 end

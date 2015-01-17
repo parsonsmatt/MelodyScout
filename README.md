@@ -6,10 +6,7 @@ application up and running.
 ## Todo:
 
 * Deploying Beta:
-  * Configure Capistrano
-  * Setup server
-    * nginx
-    * Passenger
+  * Configure for Heroku
 * After Deploying Beta:
   * Clean up the UX:
     * Releases
