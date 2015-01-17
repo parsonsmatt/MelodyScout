@@ -6,8 +6,4 @@ class ArtistTest < ActiveSupport::TestCase
     @artist = Artist.new(name: "test artist")
   end
 
-  test "invalid without name" do
-    @artist.name = ""
-    assert_not @artist.valid?
-  end
 end
