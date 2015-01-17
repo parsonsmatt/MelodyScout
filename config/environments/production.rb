@@ -18,7 +18,7 @@ Rails.application.configure do
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like
   # NGINX, varnish or squid.
-  # config.action_dispatch.rack_cache = true
+  config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or NGINX will already do this).
   config.serve_static_assets = true
@@ -75,4 +75,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Mailer
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'melodyscout.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    address:                'smtp.gmail.com',
+    port:                   '587',
+    authentication:         :plain,
+    user_name:              ENV['GMAIL_USERNAME'],
+    password:               ENV['GMAIL_PASSWORD'],
+    enable_starttles_auto:  true
+  }
 end
