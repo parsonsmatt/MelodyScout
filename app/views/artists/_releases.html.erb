@@ -1,21 +1,23 @@
-<h2>Contributions</h2>
+<h2>Releases:</h2>
 <table class='table'>
-  <tr>
-    <th>Release</th>
-    <th>Role</th>
-    <th colspan='2'></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Release</th>
+      <th>Role</th>
+      <th colspan='2'></th>
+    </tr>
+  </thead>
   <% @artist.contributions.each do |c| %>
     <tr>
       <td><%= link_to c.release.name, release_path(c.release) %></td>
       <td><%= c.role %></td>
-      <td><%= link_to 'Edit', edit_contribution_path(c) %></td>
-      <td><%= link_to 'Delete', artist_contribution_path(@artist,c), method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
+      <td><%= link_to 'Edit', edit_contribution_path(c), class: 'btn btn-default' %></td>
+      <td><%= link_to 'Delete', artist_contribution_path(@artist,c), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
     </tr>
   <% end %>
   <tr>
     <td colspan='4' class='center'>
-      <%= link_to 'Add Release', new_artist_contribution_path(@artist) %>
+      <%= link_to 'Add Release', new_artist_contribution_path(@artist), class: 'btn btn-default' %>
     </td>
   </tr>
 </table>
