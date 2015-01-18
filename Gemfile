@@ -2,14 +2,16 @@ source 'https://rubygems.org'
 
 ruby "2.2.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.rc1'
+gem 'rails', '~> 4.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.17.1'
 # Use Bootstrap for styling
+gem 'twitter-bootstrap-rails', '~> 3.2.0'
 gem 'bootstrap-sass', '~> 3.3.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0'
-# Use Uglifier as compressor for JavaScript assets
+gem 'autoprefixer-rails'
+#Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

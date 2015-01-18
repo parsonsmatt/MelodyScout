@@ -1,18 +1,18 @@
 <div class="row">
-    <h1>Listing Releases</h1>
+    <h1>Releases</h1>
 </div>
 <div class='row'>
     <div class="col-md-8 col-md-offset-2">
 
-        <h2><%= link_to 'New Release', new_release_path %></h2>
+      <center><%= link_to 'New Release', new_release_path, class: 'btn btn-primary'%></center>
 
         <table class='table'>
-            <theader>
+            <thead>
             <tr>
                 <th>Name</th>
                 <th>Description</th>
             </tr>
-            </theader>
+            </thead>
             <tbody>
             <% @releases.each do |release| %>
                 <tr>

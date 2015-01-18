@@ -1,0 +1,22 @@
+footer {
+    margin-top: 40px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 10px;
+    border-top: 1px solid $gray-light;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    ul {
+        float: right;
+        display: inline;
+        list-style: none;
+        li {
+            display: inline;
+            &+ li:before {
+                content: "| "
+            }
+        }
+    }
+}

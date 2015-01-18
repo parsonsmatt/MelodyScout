@@ -1,21 +1,23 @@
 <h2>Members:</h2>
 <table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Role</th>
-    <th colspan='2'>Controls</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th colspan='2'>Controls</th>
+    </tr>
+  </thead>
   <% @artist.member_relations.each do |m| %> 
     <tr>
       <td><%= link_to m.member.name, m.member %></td>
       <td><%= m.role %></td>
-      <td><%= link_to 'Edit', edit_membership_path(m) %></td>
-      <td><%= link_to 'Delete', artist_member_path(@artist,m.member), method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
+      <td><%= link_to 'Edit', edit_membership_path(m), class: 'btn btn-default' %></td>
+      <td><%= link_to 'Delete', artist_member_path(@artist,m.member), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
     </tr>
   <% end %>
     <tr>
       <td colspan='4' class='center'>
-        <%= link_to 'Add member!', new_artist_member_path(@artist) %>
+        <%= link_to 'Add member', new_artist_member_path(@artist), class: 'btn btn-default' %>
       </td>
     </tr>
 </table>

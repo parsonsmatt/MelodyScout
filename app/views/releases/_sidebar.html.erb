@@ -1,6 +1,10 @@
 <aside class='col-md-3 col-md-pull-6'>
-  <h2>Release</h2>
   <table class='table'>
+    <thead>
+      <tr>
+        <th colspan='2' class='center'>Release</th>
+      </tr>
+    </thead>
     <% { "Name" => @release.name,
          #"Picture" => image_tag("release.png", size: "50x50", alt: @release.name),
          "Description" => @release.description,
@@ -13,5 +17,7 @@
     </tr>
   <% end %>
   </table>
-  <%= link_to 'Edit', edit_release_path(@release) if logged_in? %>
+  <p>
+  <%= link_to 'Edit', edit_release_path(@release), class: 'btn btn-default' if logged_in? %>
+  </p>
 </aside>

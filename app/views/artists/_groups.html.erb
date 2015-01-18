@@ -1,21 +1,23 @@
 <h2>Groups:</h2>
 <table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Role</th>
-    <th colspan='2'>Controls</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th colspan='2'>Controls</th>
+    </tr>
+  </thead>
   <% @artist.group_relations.each do |b| %>
     <tr>
       <td><%= link_to b.group.name, artist_path(b.group) %></td>
       <td><%= b.role %></td>
-      <td><%= link_to 'Edit', edit_membership_path(b) %></td>
-      <td><%= link_to 'Destroy ', artist_group_path(@artist,b.group), method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
+      <td><%= link_to 'Edit', edit_membership_path(b), class: 'btn btn-default' %></td>
+      <td><%= link_to 'Destroy ', artist_group_path(@artist,b.group), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
     </tr>
   <% end %>
   <tr>
     <td colspan='4' class='center'>
-      <%= link_to 'Add group!', new_artist_group_path(@artist) %>
+      <%= link_to 'Add group', new_artist_group_path(@artist), class: 'btn btn-default' %>
     </td>
   </tr>
 </table>

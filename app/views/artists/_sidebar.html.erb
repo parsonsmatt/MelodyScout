@@ -1,6 +1,11 @@
 <aside class='col-md-3 col-md-pull-6'>
-  <h2>Profile</h2>
+  <p><%= render 'follow_form' if logged_in? %></p>
   <table class='table'>
+    <thead>
+      <tr>
+        <th colspan='2' class='center'>Profile</th>
+      </tr>
+    </thead>
     <% { "Name" => @artist.name,
          #"Picture" => image_tag("artist.png", size: "50x50", alt: @artist.name),
          "Description" => @artist.description,
@@ -14,6 +19,5 @@
       </tr>
     <% end %>
   </table>
-  <%= render 'follow_form' if logged_in? %>
-  <%= link_to 'Edit', edit_artist_path(@artist) if logged_in? %>
+  <p><%= link_to 'Edit', edit_artist_path(@artist), class: 'btn btn-default' if logged_in? %></p>
 </aside>

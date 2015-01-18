@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MelodyScout</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    <%= render 'layouts/ie8shim' %>
+  <title>MelodyScout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/ie8shim' %>
+  <%= render 'layouts/ga' %>
 </head>
 <body data-controller='<%= params[:controller] %>' data-action='<%= params[:action] %>'>
 
 <div class="container">
-    <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
 
-    <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
+  <%= bootstrap_flash %>
 
-    <%= yield %>
+  <%= yield %>
 
-    <%= debug(params) if Rails.env.development? %>
-    <%= render 'layouts/footer' %>
+  <%= debug(params) if Rails.env.development? %>
+  <%= render 'layouts/footer' %>
 
 </div>
 

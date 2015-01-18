@@ -1,30 +1,16 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container-fluid">
-    
-    <!-- Stuff that shows when collapsed: -->
-    <div class="navbar-header">
-      <%= link_to "MelodyScout", '#', class: "navbar-brand" %>
-      
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tm_navbar_collapse">
-        <span class="sr-only">Toggle Navigation</span>
-        <% 3.times do %><span class="icon-bar"></span><% end %>
-      </button>
-    </div>
-    
-    <!-- Stuff that collapses: -->
-    <nav class="collapse navbar-collapse" id="tm_navbar_collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Artists', artists_path %></li>
-        <li><%= link_to 'Releases', releases_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to 'Profile', current_user %></li>
-          <li><%= link_to 'Log out', logout_path, method: "delete" %></li>
-        <% else %>
-          <li><%= link_to 'Log in', login_path %></li>
-          <li><%= link_to 'Register', register_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+<%= nav_bar fixed: :top, inverse: true, responsive: true, brand: "MelodyScout" do %>
+
+  <%= menu_group pull: :right do %>
+    <%= menu_item 'Home', root_path %>
+    <%= menu_item 'Artists', artists_path %>
+    <%= menu_item 'Releases', releases_path %>
+
+    <% if logged_in? %>
+      <%= menu_item 'Profile', user_path(current_user) %>
+      <%= menu_item 'Log Out', logout_path, method: :delete %>
+    <% else %>
+      <%= menu_item 'Log in', login_path %>
+      <%= menu_item 'Register', register_path %>
+    <% end %>
+  <% end %>
+<% end %>

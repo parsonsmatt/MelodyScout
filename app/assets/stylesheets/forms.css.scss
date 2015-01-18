@@ -1,0 +1,55 @@
+input, textarea, select, .uneditable-input {
+    border: 1px solid #bbb;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.gravatar {
+    float: left;
+    margin-right: 10px;
+}
+
+.gravatar_edit {
+    margin-top: 15px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input {
+     height: auto !important;
+}
+
+.checkbox {
+    width: auto;
+    margin-left: 0;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    span {
+        margin-left: 20px;
+        font-weight: normal;
+    }
+}
+
+/* Nested Form List */
+ul.nested_form {
+    list-style: none;
+    li {
+        input, select {
+            width: 30%;
+            line-height: 1.5em;
+            margin-right: 10px;
+        }
+        .btn-danger {
+            float: right;
+            margin-top: -1px;
+        }
+    }
+}
+
+#session_remember_me {
+    width: auto;
+    margin-left: 0;
+}
+
