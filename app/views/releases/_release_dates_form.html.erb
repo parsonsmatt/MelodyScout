@@ -1,13 +1,13 @@
 <div id="release_dates">
-    <strong>Release Dates:</strong>
-    <ul class="nested_form release_dates">
-        <%= f.fields_for :release_dates do |rd_fields| %>
-            <%= render 'release_date_fields', f: rd_fields %>
-        <% end %>
-        <li>
-        <div class="links">
-            <%= link_to_add_association 'Add Release Date', f, :release_dates, class: 'btn btn-success' %>
-        </div>
-        </li>
-    </ul>
+  <strong>Release Dates:</strong>
+  <ul class="nested_form release_dates">
+    <%= f.fields_for :release_dates do |rd_fields| %>
+      <%= render 'release_date_fields', f: rd_fields %>
+    <% end %>
+    <li>
+      <div class="links">
+        <%= link_to_add_association 'Add Release Date', f, :release_dates, class: 'btn btn-success' %>
+      </div>
+    </li>
+  </ul>
 </div>
