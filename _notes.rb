@@ -1,4 +1,6 @@
 
+# In devevlopment, GMAIL_PASSWORD must be set as environment variable for it to run
+
 # release form:
 # 
 # ---
