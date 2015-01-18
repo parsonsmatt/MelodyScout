@@ -7,7 +7,7 @@ class FollowsController < ApplicationController
     @follow.artist = @artist
     if @follow.save
       respond_to do |format|
-        format.html { redirect_to artist }
+        format.html { redirect_to @artist }
         format.js
       end
     end
