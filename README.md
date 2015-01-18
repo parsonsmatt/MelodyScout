@@ -1,6 +1,6 @@
 # MelodyScout
 
-## v0.1.0
+## v0.1.1
 
 MelodyScout is a Rails application that notifies people when their favorite artists release new music.
 
