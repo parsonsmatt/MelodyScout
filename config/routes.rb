@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'about'     => 'welcome#about'
   get 'contact'   => 'welcome#contact'
-  get 'facebook'  => redirect('http://www.facebook.com/')
+  get 'facebook'  => redirect('http://www.facebook.com/melodyscoutweb')
 
   # Releases:
   resources :releases do
