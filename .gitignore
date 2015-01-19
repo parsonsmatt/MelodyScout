@@ -10,6 +10,9 @@
 # Ignore swap. Isn't working in my global...
 *.swp
 
+# Ignore capistrano:
+.capistrano/
+
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
