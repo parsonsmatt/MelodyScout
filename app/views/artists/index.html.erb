@@ -3,8 +3,9 @@
 </div>
 <div class='row'>
   <div class='col-md-8 col-md-push-2'>
-    <center><%= link_to 'New Artist', new_artist_path, class: 'btn btn-primary' %></center>
-
+    <center><p><%= link_to 'New Artist', new_artist_path, class: 'btn btn-primary' %></p></center>
+    <input type="text" placeholder="Filter Artists..." id="artist-filter-input" />
+    <p id="artist-filter-text"></p>
     <table class="table">
       <thead>
         <tr>
