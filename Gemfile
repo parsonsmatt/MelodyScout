@@ -37,6 +37,14 @@ gem 'selectize-rails', '~> 0.11.2'
 # Nested forms
 gem 'cocoon', '~> 1.2.6'
 
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma', require: false
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'faker', '~> 1.4.3'
@@ -52,6 +60,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'unicorn'
+  gem 'puma'
   gem 'rack-cache'
 end
