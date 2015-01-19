@@ -6,6 +6,8 @@ set :repo_url,      'git@example.com:MelodyScout/MelodyScout'
 set :user,          'melodyscout'
 set :puma_threads,  [4,16]
 set :puma_workers,  0
+# TODO: set to master after done, while I'm testing...
+set :branch,        'digitalocean' 
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
