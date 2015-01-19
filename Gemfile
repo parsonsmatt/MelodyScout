@@ -29,7 +29,7 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'bcrypt', '~> 3.1.7'
 
 # Scheduled tasks:
-gem 'whenever', '~> 0.9.4'
+gem 'whenever', '~> 0.9.4', require: false
 
 # Better select forms:
 gem 'selectize-rails', '~> 0.11.2'
