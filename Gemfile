@@ -29,13 +29,22 @@ gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'bcrypt', '~> 3.1.7'
 
 # Scheduled tasks:
-gem 'whenever', '~> 0.9.4'
+gem 'whenever', '~> 0.9.4', require: false
 
 # Better select forms:
 gem 'selectize-rails', '~> 0.11.2'
 
 # Nested forms
 gem 'cocoon', '~> 1.2.6'
+
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma', require: false
+  gem 'capistrano-secrets-yml', '~> 1.0.0'
+end
 
 group :development, :test do
   gem 'byebug'
@@ -52,6 +61,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'unicorn'
+  gem 'puma'
   gem 'rack-cache'
 end
