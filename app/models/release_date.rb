@@ -11,7 +11,7 @@ class ReleaseDate < ActiveRecord::Base
     self.save
   end
 
-  def ReleaseDate.daily_release
+  def self.daily_release
     ReleaseDate.where(date: Date.today).each(&:release!)
   end
 
