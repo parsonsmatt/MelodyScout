@@ -85,9 +85,9 @@ Rails.application.configure do
     address:                'smtp.gmail.com',
     port:                   '587',
     authentication:         :plain,
-    user_name:              ENV['GMAIL_USERNAME'],
-    password:               ENV['GMAIL_PASSWORD'],
+    user_name:              Rails.application.secrets.gmail_username,
+    password:               Rails.application.secrets.gmail_password,
     enable_starttles_auto:  true,
-    domain:                 'melodyscout.herokuapp.com'
+    domain:                 'www.melodyscout.com'
   }
 end
