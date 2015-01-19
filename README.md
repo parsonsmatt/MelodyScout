@@ -7,6 +7,7 @@ MelodyScout is a Rails application that notifies people when their favorite arti
 ## Todo:
 
 * Clean up the UX:
+    * Index page should have search/filter feature
     * Releases
           * Create new Artist from Contribution forms
     * Artists
