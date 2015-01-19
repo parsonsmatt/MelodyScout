@@ -7,8 +7,6 @@ set :user,          'melodyscout'
 set :puma_threads,  [4,16]
 set :puma_workers,  0
 
-# TODO: set to master after done, while I'm testing...
-set :branch,        'digitalocean' 
 set :stage,         :production
 set :deploy_via,    :remote_cache
 set :copy_exclude,  [ '.git' ]
@@ -68,7 +66,7 @@ namespace :deploy do
   end
 
   # TODO: Uncomment when going to master
-  # before :starting,     :check_revision
+  before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
