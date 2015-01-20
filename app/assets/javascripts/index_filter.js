@@ -1,4 +1,6 @@
-var filterTables = function() {
+var MelodyScout = MelodyScout || {};
+
+MelodyScout.filterTables = function() {
     $('#filter-input').keyup(function() {
         var filterString = $('#filter-input').val().toUpperCase();
         $.each($('.filter'), function(i, row) {
@@ -12,7 +14,6 @@ var filterTables = function() {
     });
 };
 
-$(document).ready(filterTables);
-$(document).on('page:load', filterTables);
+$(document).on('ready page:load', MelodyScout.filterTables);
         
         
