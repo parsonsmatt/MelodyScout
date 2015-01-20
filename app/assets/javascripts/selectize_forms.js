@@ -11,6 +11,9 @@ MelodyScout.selectizePages = function() {
         case 'releases':
             seConfig = seConfigs.releases;
             break;
+        case 'artists':
+            seConfig = seConfigs.artists;
+            break;
         default:
             seConfig = seConfigs.basic; 
             break;
