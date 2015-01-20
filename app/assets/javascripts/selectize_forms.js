@@ -5,7 +5,7 @@ MelodyScout.selectizePages = function() {
 
     var controller = document.body.getAttribute( "data-controller" );
     var action = document.body.getAttribute( "data-action" );
-    
+
     var seConfig;
     switch (controller) {
         case 'releases':
@@ -34,32 +34,40 @@ MelodyScout.selectizeConfigurations = {
     },
     releases: {
         create: function(input, cb) {
-            // Something was created!
-            // Send request to server
-            // Response will contain ID of newly created release
-            // 'value' = artist_id
-            // 'text' = input
-
-            return {
-                'value': 0,
-                'text': input
-            };
+            $.post( 'http://'+window.location.host+'/artists', 
+                    { 
+                        'artist': { 
+                            'name': input
+                        }
+                    },
+                    function(data) {
+                        var id=data.id;
+                        cb({ 
+                            'value': id,
+                            'text': input
+                        });
+                    }, 'json'
+                  );
         },
         createOnBlur: true,
         searchField: 'name'  
     },
     artists: {
         create: function(input, cb) {
-            // Something was created!
-            // Send request to server
-            // Response will contain ID of newly created release
-            // 'value' = artist_id
-            // 'text' = input
-
-            return {
-                'value': 0,
-                'text': input
-            };
+            $.post( 'http://'+window.location.host+'/releases', 
+                    { 
+                        'release': { 
+                            'name': input
+                        }
+                    },
+                    function(data) {
+                        var id=data.id;
+                        cb({ 
+                            'value': id,
+                            'text': input
+                        });
+                    }, 'json'
+                  );
         },
         createOnBlur: true,
         searchField: 'name'  
