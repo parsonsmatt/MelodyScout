@@ -15,9 +15,4 @@
       <td><%= link_to 'Delete', artist_contribution_path(@artist,c), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
     </tr>
   <% end %>
-  <tr>
-    <td colspan='4' class='center'>
-      <%= link_to 'Add Release', new_artist_contribution_path(@artist), class: 'btn btn-success' %>
-    </td>
-  </tr>
 </table>
