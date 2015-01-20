@@ -7,8 +7,9 @@ MelodyScout is a Rails application that notifies people when their favorite arti
 ## Todo:
 
 * Enable SSL
+* Instead of directly creating artist/releases, get a 'New' form response which is filled out and posted via ajax
 * Currently, Notices build up for Users. They have a dismissal feature.
-    1. User `has_a` NoticeConfiguration which controls how the user gets notified.
+    1. User `has_a` NoticeConfiguration which controls how the user gets notified?
         * Email? SMS?
         * Daily? Weekly? Monthly?
         * Every [period of time] [contact] user about [notices] 
