@@ -6,17 +6,6 @@
  * 3. Place containing div
  */
 
+console.log('receiving releases/new.js.erb');
 
-var MelodyScout = MelodyScout || {};
-var MelodyScout.releases = MelodyScout.releases || {};
-
-MelodyScout.releases.generateFormHtml = function() {
-  return '<%= escape_javascript(render "js_new_form", release: @release) %>';
-};
-
-(function() {
-
-  console.log('receiving releases/new.js.erb');
-
-  $('body').append( $( MelodyScout.generateFormHtml() ) );
-})();
+$('#modal-window').html( '<%= escape_javascript(render "js_new_form", release: @release) %>' );
