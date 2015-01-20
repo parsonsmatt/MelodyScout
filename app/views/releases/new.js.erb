@@ -3,13 +3,15 @@
 var MelodyScout = MelodyScout || {};
 
 MelodyScout.generateNewForm = function() {
-  var formHtml = "<%= form_for @release do |f| %> <%= f.label_for :name %> <%= f.field_for :name %> <% end %>";
+  var formHtml = '<%= escape_javascript(render "js_new_form", release: @release) %>';
+  return formHtml;
 };
 
 MelodyScout.displayNewForm = function() {
-
+ 
 };
 
-$(document).on('ready page:load', function() {
-  console.log('new received!');
-});
+console.log('receiving');
+$('h1').text('what');
+$('a#new-release').parent().parent().html(MelodyScout.generateNewForm());
+

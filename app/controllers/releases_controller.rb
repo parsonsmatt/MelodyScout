@@ -21,6 +21,10 @@ class ReleasesController < ApplicationController
   # GET /releases/new
   def new
     @release = Release.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /releases/1/edit
