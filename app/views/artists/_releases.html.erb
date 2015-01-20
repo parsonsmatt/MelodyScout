@@ -4,15 +4,12 @@
     <tr>
       <th>Release</th>
       <th>Role</th>
-      <th colspan='2'></th>
     </tr>
   </thead>
   <% @artist.contributions.each do |c| %>
     <tr>
       <td><%= link_to c.release.name, release_path(c.release) %></td>
       <td><%= c.role %></td>
-      <td><%= link_to 'Edit', edit_contribution_path(c), class: 'btn btn-default' %></td>
-      <td><%= link_to 'Delete', artist_contribution_path(@artist,c), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } if current_user.try(:admin?) %></td>
     </tr>
   <% end %>
 </table>
