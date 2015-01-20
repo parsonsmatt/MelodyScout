@@ -1,17 +1,22 @@
 // GET releases/new --> returns modal form and submits over ajax
 
+/*
+ * 1. Generate form
+ * 2. Generate containing div
+ * 3. Place containing div
+ */
+
+
 var MelodyScout = MelodyScout || {};
+var MelodyScout.releases = MelodyScout.releases || {};
 
-MelodyScout.generateNewForm = function() {
-  var formHtml = '<%= escape_javascript(render "js_new_form", release: @release) %>';
-  return formHtml;
+MelodyScout.releases.generateFormHtml = function() {
+  return '<%= escape_javascript(render "js_new_form", release: @release) %>';
 };
 
-MelodyScout.displayNewForm = function() {
- 
-};
+(function() {
 
-console.log('receiving');
-$('h1').text('what');
-$('a#new-release').parent().parent().html(MelodyScout.generateNewForm());
+  console.log('receiving releases/new.js.erb');
 
+  $('body').append( $( MelodyScout.generateFormHtml() ) );
+})();
