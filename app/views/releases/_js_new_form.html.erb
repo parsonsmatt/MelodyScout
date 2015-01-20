@@ -1,9 +1,9 @@
-<div>
-<%= form_for release, remote: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  <%= f.submit remote: true %>
-<% end %>
+<div class='new-release-modal'>
+  <%= form_for release, remote: true do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <%= f.submit remote: true %>
+  <% end %>
 </div>
