@@ -41,9 +41,11 @@ class ReleasesController < ApplicationController
         flash[:succes] = "Release successfully created!"
         format.html { redirect_to @release }
         format.json { render :show, status: :created, location: @release }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @release.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
