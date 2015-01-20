@@ -1,0 +1,15 @@
+// GET releases/new --> returns modal form and submits over ajax
+
+var MelodyScout = MelodyScout || {};
+
+MelodyScout.generateNewForm = function() {
+  var formHtml = "<%= form_for @release do |f| %> <%= f.label_for :name %> <%= f.field_for :name %> <% end %>";
+};
+
+MelodyScout.displayNewForm = function() {
+
+};
+
+$(document).on('ready page:load', function() {
+  console.log('new received!');
+});
