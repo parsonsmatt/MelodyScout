@@ -4,8 +4,7 @@
 <div class='row'>
   <div class='col-md-8 col-md-push-2'>
     <center><p><%= link_to 'New Artist', new_artist_path, class: 'btn btn-primary' %></p></center>
-    <input type="text" placeholder="Filter Artists..." id="artist-filter-input" />
-    <p id="artist-filter-text"></p>
+    <input type="text" placeholder="Filter Artists..." id="filter-input" />
     <table class="table">
       <thead>
         <tr>
@@ -15,7 +14,7 @@
       </thead>
       <tbody>
       <% @artists.each do |artist| %>
-        <tr>
+        <tr class="filter" id="<%= artist.name %>">
         <td><%= link_to artist.name, artist %></td>
         <td><%= artist.description %></td>
       </tr>
