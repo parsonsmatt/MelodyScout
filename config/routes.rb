@@ -7,21 +7,15 @@ Rails.application.routes.draw do
   get 'facebook'  => redirect('http://www.facebook.com/melodyscoutweb')
 
   # Releases:
-  resources :releases do
-    resources :contributions, only: [:new, :create, :destroy]
-  end
+  resources :releases
   
   # Artists:
   resources :artists do
     resources :groups, only: [:new, :create, :destroy]
     resources :members, only: [:new, :create, :destroy] 
-    resources :contributions, only: [:new, :create, :destroy]
   end
 
   resources :memberships, only: [:edit, :update]
-
-  # Contributions:
-  resources :contributions, only: [:edit, :update]
 
   # User resources:
   resources :users, only: [:show, :new, :create, :edit, :update, :destroy] do
