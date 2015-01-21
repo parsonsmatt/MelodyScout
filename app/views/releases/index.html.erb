@@ -1,27 +1,22 @@
 <div class="row">
-    <h1>Releases</h1>
+  <h1>Releases</h1>
 </div>
 <div class='row'>
-    <div class="col-md-8 col-md-offset-2">
-
-      <center><p><%= link_to 'New Release', new_release_path, class: 'btn btn-primary'%></p></center>
+  <div class="col-md-8 col-md-offset-2">
+    <center><p><%= link_to 'New Release', new_release_path, class: 'btn btn-primary', remote: true %></p></center>
       <input type="text" placeholder="Filter Releases..." id="filter-input" />
-        <table class='table'>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @releases.each do |release| %>
-              <tr class="filter" id="<%= release.name %>">
-                    <td><%= link_to release.name, release %></td>
-                    <td><%= release.description %></td>
-                </tr>
-            <% end %>
-        </table>
-    </div>
-    <%= render 'shared/ads' %>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody class="releases">
+      <%= render @releases %>
+      </tbody>
+    </table>
+  </div>
+  <%= render 'shared/ads' %>
 </div>
 

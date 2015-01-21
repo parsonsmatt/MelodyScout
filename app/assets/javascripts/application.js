@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require bootstrap/dropdown
+//= require twitter/bootstrap
 //= require_tree .
 //= require turbolinks
 //= require cocoon

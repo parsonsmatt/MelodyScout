@@ -9,5 +9,6 @@
         <li><%= link_to text, link %></li>
       <% end %>
     </ul>
+  <%= debug(params) if Rails.env.development? %>
   </footer>
 </div>
