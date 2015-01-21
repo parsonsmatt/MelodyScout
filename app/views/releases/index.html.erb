@@ -1,27 +1,27 @@
 <div class="row">
-    <h1>Releases</h1>
+  <h1>Releases</h1>
 </div>
 <div class='row'>
-    <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-2">
 
-      <center><p><%= link_to 'New Release', new_release_path, class: 'btn btn-primary'%></p>
-        <p><%= link_to 'Ajax Time', new_release_path, remote: true, class: 'btn btn-primary', 'data-toggle' => 'modal', 'data-target' => '#modal-window' %></p></center>
-        <table class='table'>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% @releases.each do |release| %>
-                <tr>
-                    <td><%= link_to release.name, release %></td>
-                    <td><%= release.description %></td>
-                </tr>
-            <% end %>
-        </table>
-    </div>
-    <%= render 'shared/ads' %>
+    <center><p><%= link_to 'New Release', new_release_path, class: 'btn btn-primary'%></p>
+      <p><%= link_to 'Ajax Time', new_release_path, remote: true, class: 'btn btn-primary' %></p></center>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @releases.each do |release| %>
+        <tr>
+          <td><%= link_to release.name, release %></td>
+          <td><%= release.description %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= render 'shared/ads' %>
 </div>
 
