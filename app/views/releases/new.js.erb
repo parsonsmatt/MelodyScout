@@ -1,43 +1,7 @@
-// GET releases/new --> returns modal form and submits over ajax
+var modal = $( '<%= j(render "shared/new_modal", object: @release) %>' );
 
-/*
- * 1. Generate form
- * 2. Generate containing div
- * 3. Place containing div
- */
-
-console.log('receiving releases/new.js.erb');
-
-/* var modalString = '
-   <div id="modal" class="bootstrap-modal modal fade" aria-hidden="true">
-   
-   <div class="modal-dialog"> 
-   <div class="modal-content"> 
-   <div class="modal-header"><button class="close" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>          </div
-   ></div> </div> 
-   </div>';
- */
-
-var modalHeader = $('<div>').attr('class', 'modal-header').append(
-  $('<button>').attr('class', 'close').attr('data-dismiss', 'modal').attr('aria-hidden', 'true').append(
-    $('<span>').attr('aria-hidden', 'true').html('&times;')
-  )
-).append(
-  $('<h4>').attr('class', 'modal-title').html('New Release')
-);
-
-var modalBody = $('<div>').attr('class', 'modal-body').html("WHAT THE HELL");
-
-var modalFooter = $('<div>').attr('class', 'modal-footer').append(
-  $('<button>').attr('class', 'btn btn-default').attr('data-dismiss', 'modal').html('Close')
-);
-
-var modal = $('<div>').attr('id', 'release-modal').attr('class', 'modal fade').attr('aria-hidden', 'true').attr('role', 'dialog').append(
-  $('<div>').attr('class', 'modal-dialog').append(modalHeader).append(modalBody).append(modalFooter)
-);
-
-$('body').append(modal);
+$('body').prepend(modal);
 
 $('.modal-body').html('<%= j(render 'js_new_form', release: @release) %>');
 
-$('#release-modal').modal({show: true});
+$('#new-Release-modal').modal();
