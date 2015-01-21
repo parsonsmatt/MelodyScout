@@ -13,13 +13,9 @@
           <th>Description</th>
         </tr>
       </thead>
-      <tbody>
-      <% @releases.each do |release| %>
-        <tr>
-          <td><%= link_to release.name, release %></td>
-          <td><%= release.description %></td>
-        </tr>
-      <% end %>
+      <tbody class="releases">
+      <%= render @releases %>
+      </tbody>
     </table>
   </div>
   <%= render 'shared/ads' %>
