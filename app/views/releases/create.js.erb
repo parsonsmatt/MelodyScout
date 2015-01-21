@@ -4,6 +4,16 @@
  * 2. flash success
  */ 
 
-$('button[data-dismiss="modal"]').click();
 
-alert("<%= @release.name %> created!");
+var flash = $('<div>');
+
+<% if @release.errors.any? %>
+    $('.modal-body').html('<%= j(render 'js_new_form', release:@release) %>');  
+<% else %>
+  $('button[data-dismiss="modal"]').click();
+  flash.attr('class', 'alert alert-success').html('<%= j @release.name %> created!');
+<% end %>
+
+flash.append( $('<button>').attr('class', 'close').attr('data-dismiss', 'alert').html('&times;') );
+
+$('nav').after(flash);
