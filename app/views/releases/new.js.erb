@@ -2,7 +2,7 @@ var modal = $( '<%= j(render "shared/new_modal", object: @release) %>' );
 
 $('body').prepend(modal);
 
-$('.modal-body').html('<%= j(render 'js_new_form', release: @release) %>');
+$('.modal-body').html('<%= j(render 'form', render_contributions: false ) %>');
 
 $('#new-Release-modal').modal();
 

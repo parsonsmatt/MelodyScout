@@ -8,7 +8,7 @@
   <%= f.text_area :description %>
 
   <%= render 'release_dates_form', f: f %>
-  <%= render 'contributions_form', f: f unless no_contributions %>
+  <%= render 'contributions_form', f: f if render_contributions %>
  
   <%= f.submit 'Submit', class: 'btn btn-primary' %>
   
