@@ -17,3 +17,7 @@ var flash = $('<div>');
 flash.append( $('<button>').attr('class', 'close').attr('data-dismiss', 'alert').html('&times;') );
 
 $('nav').after(flash);
+
+// TODO: Make sure this only adds to the appropriate section: table for index, list for options
+
+$('tbody.releases').prepend( $('<%= j(render 'release', release: @release) %>') );
