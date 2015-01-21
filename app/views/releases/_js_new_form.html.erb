@@ -1,7 +1,14 @@
-  <%= form_for release, remote: true do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.submit remote: true %>
-  <% end %>
+<%= form_for release, remote: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= render "release_dates_form", f: f %>
+ 
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+  
+<% end %>
