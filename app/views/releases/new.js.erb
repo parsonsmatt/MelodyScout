@@ -33,9 +33,7 @@ var modalFooter = $('<div>').attr('class', 'modal-footer').append(
 );
 
 var modal = $('<div>').attr('id', 'release-modal').attr('class', 'modal fade').attr('aria-hidden', 'true').attr('role', 'dialog').append(
-  $('<div>').attr('class', 'modal-dialog').append(modalHeader).append(modalBody).append(
-    
-  )
+  $('<div>').attr('class', 'modal-dialog').append(modalHeader).append(modalBody).append(modalFooter)
 );
 
 $('body').append(modal);
