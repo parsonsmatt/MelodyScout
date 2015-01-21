@@ -8,7 +8,7 @@
 var flash = $('<div>');
 
 <% if @release.errors.any? %>
-    $('.modal-body').html('<%= j(render 'js_new_form', release:@release) %>');  
+    $('.modal-body').html('<%= j(render 'form', release: @release, remote: true) %>');  
 <% else %>
   $('button[data-dismiss="modal"]').click();
   flash.attr('class', 'alert alert-success').html('<%= j @release.name %> created!');
