@@ -4,6 +4,13 @@ $('body').prepend(modal);
 
 $('.modal-body').html('<%= j(render 'form', remote: true ) %>');
 
+if ( $('body').attr('data-controller') !== "releases" ) {
+	$('#release-contributions').remove();
+} 
+else {
+	MelodyScout.reSelectize();
+}
+
 $('#new-Release-modal').modal();
 
 $('button[data-dismiss="modal"]').click(function() {
