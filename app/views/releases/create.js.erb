@@ -7,6 +7,11 @@
 
 var flash = $('<div>');
 
+var newRelease = {
+  name: "<%= @release.name %>",
+  id: <%= @release.id %>
+};
+
 <% if @release.errors.any? %>
     $('.modal-body').html('<%= j(render 'form', release: @release, remote: true) %>');  
 <% else %>

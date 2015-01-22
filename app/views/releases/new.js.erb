@@ -2,7 +2,14 @@ var modal = $( '<%= j(render "shared/new_modal", object: @release) %>' );
 
 $('body').prepend(modal);
 
-$('.modal-body').html('<%= j(render 'form', no_contributions: true, remote: true ) %>');
+$('.modal-body').html('<%= j(render 'form', remote: true ) %>');
+
+if ( $('body').attr('data-controller') !== "releases" ) {
+	$('#release-contributions').remove();
+} 
+else {
+	MelodyScout.selectizePages();
+}
 
 $('#new-Release-modal').modal();
 
