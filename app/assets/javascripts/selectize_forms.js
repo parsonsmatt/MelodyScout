@@ -11,10 +11,10 @@ MelodyScout.selectizePages = function() {
     if ( $('.modal').size() === 0 ) {
         switch (controller) {
             case 'releases':
-                seConfig = seConfigs.releases_create;
+                seConfig = seConfigs.createArtists;
             break;
             case 'artists':
-                seConfig = seConfigs.artists_create;
+                seConfig = seConfigs.createReleases;
             break;
             default:
                 seConfig = seConfigs.basic;
@@ -38,44 +38,38 @@ MelodyScout.selectizeConfigurations = {
         create: false,
         searchField: 'text',
     },
-    releases_create: {
+    createArtists: {
         create: function(input, cb) {
-            $.post( window.location.origin + '/artists', 
-                   { 
-                       'artist': { 
-                           'name': input
-                       }
-                   },
-                   function(data) {
-                       var id=data.id;
-                       cb({ 
-                           'value': id,
-                           'text': input
-                       });
-                   }, 'json'
-                  );
+            $.getScript( window.location.origin + '/artists/new',
+                        function(response) {
+                            // TODO: Add artist to list after modal saves
+                        });
         },
-        createOnBlur: true,
         searchField: 'text'  
     },
-    artists_create: {
+    createReleases: {
         create: function(input, cb) {
-            $.post( window.location.origin+'/releases', 
-                   { 
-                       'release': { 
-                           'name': input
-                       }
-                   },
-                   function(data) {
-                       var id=data.id;
-                       cb({ 
-                           'value': id,
-                           'text': input
-                       });
-                   }, 'json'
-                  );
+            $.getScript(window.location.origin+'/releases/new',
+                        function() {
+                            $('.modal').promise().done(function() {
+                                $('input#release_name').val(input);
+
+                                $('input[type="submit"]').click(function() {
+                                    setTimeout(
+                                        function() {
+                                            $('.modal').promise().done(function() {
+                                                cb({'text':newRelease.name, 'value':newRelease.id});
+                                            });
+                                        }, 100
+                                    );
+                                });
+                            });
+                            // TODO: Access new release ID?
+                            // TODO: Add Release to the list after the modal saves
+                            // TODO: Unlock the selectize textbox
+                        }
+                       );
         },
-        createOnBlur: true,
         searchField: 'text'  
     },
 };
