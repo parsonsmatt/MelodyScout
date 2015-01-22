@@ -1,0 +1,28 @@
+// Artist Creation
+/*
+ * 1. hide form
+ * 2. flash success
+ */ 
+
+
+var flash = $('<div>');
+
+var newArtist = {
+  name: "<%= @artist.name %>",
+  id: <%= @artist.id %>
+};
+
+<% if @artist.errors.any? %>
+    $('.modal-body').html('<%= j(render 'form', artist: @artist, remote: true) %>');  
+<% else %>
+  $('button[data-dismiss="modal"]').click();
+  flash.attr('class', 'alert alert-success').html('<%= j @artist.name %> created!');
+<% end %>
+
+flash.append( $('<button>').attr('class', 'close').attr('data-dismiss', 'alert').html('&times;') );
+
+$('nav').after(flash);
+
+// TODO: Make sure this only adds to the appropriate section: table for index, list for options
+
+$('tbody.artists').prepend( $('<%= j(render 'artist', artist: @artist) %>') );

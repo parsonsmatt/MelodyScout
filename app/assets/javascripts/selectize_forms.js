@@ -12,7 +12,7 @@ MelodyScout.selectizePages = function() {
         switch (controller) {
             case 'releases':
                 // TODO: Change to createArtists when the artist controller/views are ready
-                seConfig = seConfigs.basic;
+                seConfig = seConfigs.createArtists;
             break;
             case 'artists':
                 seConfig = seConfigs.createReleases;
@@ -41,10 +41,23 @@ MelodyScout.selectizeConfigurations = {
     },
     createArtists: {
         create: function(input, cb) {
-            $.getScript( window.location.origin + '/artists/new',
-                        function(response) {
-                            // TODO: Add artist to list after modal saves
-                        });
+            $.getScript(window.location.origin+'/artists/new',
+                        function() {
+                            $('.modal').promise().done(function() {
+                                $('input#artist_name').val(input);
+
+                                $('input[type="submit"]').click(function() {
+                                    setTimeout(
+                                        function() {
+                                            $('.modal').promise().done(function() {
+                                                cb({'text': newArtist.name, 'value':newArtist.id});
+                                            });
+                                        }, 100
+                                    );
+                                });
+                            });
+                        }
+            );
         },
         searchField: 'text'  
     },
@@ -65,11 +78,8 @@ MelodyScout.selectizeConfigurations = {
                                     );
                                 });
                             });
-                            // TODO: Access new release ID?
-                            // TODO: Add Release to the list after the modal saves
-                            // TODO: Unlock the selectize textbox
                         }
-                       );
+            );
         },
         searchField: 'text'  
     },
