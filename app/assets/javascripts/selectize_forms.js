@@ -11,7 +11,8 @@ MelodyScout.selectizePages = function() {
     if ( $('.modal').size() === 0 ) {
         switch (controller) {
             case 'releases':
-                seConfig = seConfigs.createArtists;
+                // TODO: Change to createArtists when the artist controller/views are ready
+                seConfig = seConfigs.basic;
             break;
             case 'artists':
                 seConfig = seConfigs.createReleases;
