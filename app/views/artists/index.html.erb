@@ -13,12 +13,7 @@
         </tr>
       </thead>
       <tbody>
-      <% @artists.each do |artist| %>
-        <tr class="filter" id="<%= artist.name %>">
-        <td><%= link_to artist.name, artist %></td>
-        <td><%= artist.description %></td>
-      </tr>
-    <% end %>
+			<%= render @artists %>
       </tbody>
     </table>
   </div>
