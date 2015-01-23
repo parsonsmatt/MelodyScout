@@ -11,6 +11,7 @@ MelodyScout is a Rails application that notifies people when their favorite arti
 
 ## Todo:
 
+* Deleting a ReleaseDate with associated Notifications causes a database error
 * Select form has a race condition, if the POST doesn't respond quickly enough...
 * Remove editing of contributions directly from Artists
 * Enable a 'Delete' for admins and 'Report' for users
