@@ -1,20 +1,16 @@
 # MelodyScout
 
-## v0.1.6
+## v0.1.7
 
 MelodyScout is a Rails application that notifies people when their favorite artists release new music.
 
 ### What's new?
 
-* Creating Artists from Releases and vice versa is much smoother process now.
-* Some style updates
+* The fancy select forms now work appropriately
+* Views are refactored to be a bit more manageable
 
 ## Todo:
 
-* Tidy up the Selectize box:
-    * Typing a comma "," into the Selectize box causes it to create.
-    * Defaults to first option, which usually isn't helpful.
-    * Backing out of the New Model process doesn't unlock Selectize
 * Remove editing of contributions directly from Artists
 * Enable a 'Delete' for admins and 'Report' for users
 * Currently, Notices build up for Users. They have a dismissal feature.
