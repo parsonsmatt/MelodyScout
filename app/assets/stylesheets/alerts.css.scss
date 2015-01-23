@@ -3,8 +3,16 @@ div.alert {
     float: left;
     width: auto;
     margin: 20px;
+    z-index: 1;
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    min-width: 20%;
+    -webkit-transition: opacity 0.5s ease; 
+    transition: opacity 0.5s ease;
 }
 
+/*
 #error_explanation {
     color: red;
     ul {
@@ -12,11 +20,9 @@ div.alert {
         margin: 0 0 30px 0;
     }
 }
-
+*/
 .field_with_errors {
-    @extend .has-error;
-    .form_control {
-        color: $state-danger-text;
-    }
+    // @extend .has-error;
+	color: $state-danger-text;
 }
 
