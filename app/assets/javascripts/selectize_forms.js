@@ -36,10 +36,12 @@ MelodyScout.selectizePages = function() {
 
 MelodyScout.selectizeConfigurations = {
     basic: {
+        delimiter: null, // Delimiter is by default ',' which causes it to break on , input
         create: false,
         searchField: 'text',
     },
     createArtists: {
+        delimiter: null, // Delimiter is by default ',' which causes it to break on , input
         create: function(input, cb) {
             $.getScript(window.location.origin+'/artists/new',
                         function() {
@@ -62,6 +64,7 @@ MelodyScout.selectizeConfigurations = {
         searchField: 'text'  
     },
     createReleases: {
+        delimiter: null, // Delimiter is by default ',' which causes it to break on , input
         create: function(input, cb) {
             $.getScript(window.location.origin+'/releases/new',
                         function() {
