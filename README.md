@@ -1,20 +1,17 @@
 # MelodyScout
 
-## v0.1.4
+## v0.1.5
+
 
 MelodyScout is a Rails application that notifies people when their favorite artists release new music.
 
 ### What's new?
 
-* SSL is (or, should be) enabled. 
-* Releases have a sweet new form that operates over AJAX.
-* Filter has been implemented.
+* Creating Artists from Releases and vice versa is much smoother process now.
+* Some style updates
 
 ## Todo:
 
-* Instead of directly creating artist, get a 'New' form response which is filled out and posted via ajax
-* When creating new contributions for artists, be able to create new Releases with a form instead of autocreating with name
-* When creating new contributions for releases, be able to auto create new Artists with a form instead of just by name
 * Remove editing of contributions directly from Artists
 * Enable a 'Delete' for admins and 'Report' for users
 * Currently, Notices build up for Users. They have a dismissal feature.
@@ -22,8 +19,3 @@ MelodyScout is a Rails application that notifies people when their favorite arti
         * Email? SMS?
         * Daily? Weekly? Monthly?
         * Every [period of time] [contact] user about [notices] 
-* Figure out monetization
-* Google AdSense (text ads only)
-* Amazon affiliate links (query from release+album name)
-* Create necessary roles for subscription service
-
