@@ -11,11 +11,10 @@ MelodyScout.selectizePages = function() {
     if ( $('.modal').size() === 0 ) {
         switch (controller) {
             case 'releases':
-                // TODO: Change to createArtists when the artist controller/views are ready
-                seConfig = seConfigs.createArtists;
+                seConfig = seConfigs.createModel("artist");
             break;
             case 'artists':
-                seConfig = seConfigs.createReleases;
+                seConfig = seConfigs.createModel("release");
             break;
             default:
                 seConfig = seConfigs.basic;
@@ -40,52 +39,50 @@ MelodyScout.selectizeConfigurations = {
         create: false,
         searchField: 'text',
     },
-    createArtists: {
-        delimiter: null, // Delimiter is by default ',' which causes it to break on , input
-        create: function(input, cb) {
-            $.getScript(window.location.origin+'/artists/new',
-                        function() {
-                            $('.modal').promise().done(function() {
-                                $('input#artist_name').val(input);
+    createModel: function(model) {
+        return {
+            delimiter: null,
+            create: function(input, cb) {
+                $.getScript(window.location.origin+'/'+model+'s/new',
+                            function() {
+                                $('.modal').promise().done(function() {
+                                    $('input#'+model+'_name').val(input);
 
-                                $('input[type="submit"]').click(function() {
-                                    setTimeout(
-                                        function() {
-                                            $('.modal').promise().done(function() {
-                                                cb({'text': newArtist.name, 'value':newArtist.id});
-                                            });
-                                        }, 100
-                                    );
-                                });
-                            });
-                        }
-            );
-        },
-        searchField: 'text'  
-    },
-    createReleases: {
-        delimiter: null, // Delimiter is by default ',' which causes it to break on , input
-        create: function(input, cb) {
-            $.getScript(window.location.origin+'/releases/new',
-                        function() {
-                            $('.modal').promise().done(function() {
-                                $('input#release_name').val(input);
+                                    $('input[type="submit"]').click(function() {
+                                        // setTimeout because we are waiting for AJAX to finish
+                                        setTimeout(
+                                            function() {
+                                                $('.modal').promise().done(function() {
+                                                    function capitalize(str) {
+                                                        return str.charAt(0).toUpperCase() + str.substring(1);
+                                                    }
 
-                                $('input[type="submit"]').click(function() {
-                                    setTimeout(
-                                        function() {
-                                            $('.modal').promise().done(function() {
-                                                cb({'text':newRelease.name, 'value':newRelease.id});
-                                            });
-                                        }, 100
-                                    );
+                                                    cb({
+                                                        'text':     eval('new' + capitalize(model)).name, 
+                                                        'value':    eval('new' + capitalize(model)).id
+                                                    });
+                                                });
+                                            }, 100
+                                        );
+                                    });
+                            
+                                    $('button[data-dismiss="modal"]').click(function() {
+                                        setTimeout(
+                                            function() {
+                                                $('.modal').promise().done(function() {
+                                                    cb();
+                                                });
+                                            }, 150
+                                        );
+
+                                    });
                                 });
-                            });
-                        }
-            );
-        },
-        searchField: 'text'  
-    },
+                            }
+                );
+            },
+            searchField: 'text'
+        }
+    }
 };
 
 $(document).on('ready page:load', MelodyScout.selectizePages);
