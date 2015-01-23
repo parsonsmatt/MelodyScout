@@ -1,6 +1,4 @@
-<div class='row'>
-  <h1 class='title'>Artists</h1>
-</div>
+<% provide :title, "Artists" %>
 <div class='row'>
   <div class='col-md-8 col-md-push-2'>
     <center><p><%= link_to 'New Artist', new_artist_path, class: 'btn btn-primary' %></p></center>
@@ -13,12 +11,7 @@
         </tr>
       </thead>
       <tbody>
-      <% @artists.each do |artist| %>
-        <tr class="filter" id="<%= artist.name %>">
-        <td><%= link_to artist.name, artist %></td>
-        <td><%= artist.description %></td>
-      </tr>
-    <% end %>
+			<%= render @artists %>
       </tbody>
     </table>
   </div>

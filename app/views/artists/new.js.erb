@@ -1,17 +1,17 @@
-var modal = $( '<%= j(render "shared/new_modal", object: @release) %>' );
+var modal = $( '<%= j(render "shared/new_modal", object: @artist) %>' );
 
 $('body').prepend(modal);
 
 $('.modal-body').html('<%= j(render 'form', remote: true ) %>');
 
-if ( $('body').attr('data-controller') !== "releases" ) {
-	$('#release-contributions').remove();
+if ( $('body').attr('data-controller') !== "artists" ) {
+	$('#artist-contributions').remove();
 } 
 else {
 	MelodyScout.selectizePages();
 }
 
-$('#new-Release-modal').modal();
+$('#new-Artist-modal').modal();
 
 $('button[data-dismiss="modal"]').click(function() {
   ['.modal'].forEach(function(elem) {

@@ -6,17 +6,21 @@ MelodyScout.selectizePages = function() {
     var controller = document.body.getAttribute( "data-controller" );
     var action = document.body.getAttribute( "data-action" );
 
-    var seConfig;
-    switch (controller) {
-        case 'releases':
-            seConfig = seConfigs.releases;
+    var seConfig = seConfigs.basic;
+
+    if ( $('.modal').size() === 0 ) {
+        switch (controller) {
+            case 'releases':
+                // TODO: Change to createArtists when the artist controller/views are ready
+                seConfig = seConfigs.createArtists;
             break;
-        case 'artists':
-            seConfig = seConfigs.artists;
+            case 'artists':
+                seConfig = seConfigs.createReleases;
             break;
-        default:
-            seConfig = seConfigs.basic; 
+            default:
+                seConfig = seConfigs.basic;
             break;
+        }
     }
 
     // Selectize on page load
@@ -35,46 +39,50 @@ MelodyScout.selectizeConfigurations = {
         create: false,
         searchField: 'text',
     },
-    releases: {
+    createArtists: {
         create: function(input, cb) {
-            $.post( 'http://'+window.location.host+'/artists', 
-                    { 
-                        'artist': { 
-                            'name': input
+            $.getScript(window.location.origin+'/artists/new',
+                        function() {
+                            $('.modal').promise().done(function() {
+                                $('input#artist_name').val(input);
+
+                                $('input[type="submit"]').click(function() {
+                                    setTimeout(
+                                        function() {
+                                            $('.modal').promise().done(function() {
+                                                cb({'text': newArtist.name, 'value':newArtist.id});
+                                            });
+                                        }, 100
+                                    );
+                                });
+                            });
                         }
-                    },
-                    function(data) {
-                        var id=data.id;
-                        cb({ 
-                            'value': id,
-                            'text': input
-                        });
-                    }, 'json'
-                  );
+            );
         },
-        createOnBlur: true,
-        searchField: 'name'  
+        searchField: 'text'  
     },
-    artists: {
+    createReleases: {
         create: function(input, cb) {
-            $.post( 'http://'+window.location.host+'/releases', 
-                    { 
-                        'release': { 
-                            'name': input
+            $.getScript(window.location.origin+'/releases/new',
+                        function() {
+                            $('.modal').promise().done(function() {
+                                $('input#release_name').val(input);
+
+                                $('input[type="submit"]').click(function() {
+                                    setTimeout(
+                                        function() {
+                                            $('.modal').promise().done(function() {
+                                                cb({'text':newRelease.name, 'value':newRelease.id});
+                                            });
+                                        }, 100
+                                    );
+                                });
+                            });
                         }
-                    },
-                    function(data) {
-                        var id=data.id;
-                        cb({ 
-                            'value': id,
-                            'text': input
-                        });
-                    }, 'json'
-                  );
+            );
         },
-        createOnBlur: true,
-        searchField: 'name'  
-    }
+        searchField: 'text'  
+    },
 };
 
 $(document).on('ready page:load', MelodyScout.selectizePages);
