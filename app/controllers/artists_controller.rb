@@ -39,11 +39,11 @@ class ArtistsController < ApplicationController
         flash[:success] = "Artist successfully updated."
         format.html { redirect_to @artist }
         format.json { render :show, status: :created, location: @artist }
-				format.js
+        format.js
       else
         format.html { render :new }
         format.json { render json: @artist.errors, status: :unprocessable_entity }
-				format.js
+        format.js
       end
     end
   end
