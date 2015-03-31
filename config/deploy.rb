@@ -2,7 +2,7 @@
 lock '3.3.5'
 
 set :application,   'MelodyScout'
-set :repo_url,      'git@github.com:MelodyScout/MelodyScout'
+set :repo_url,      'git@github.com:parsonsmatt/MelodyScout'
 set :user,          'melodyscout'
 set :puma_threads,  [4,16]
 set :puma_workers,  0
