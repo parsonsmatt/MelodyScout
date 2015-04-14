@@ -16,7 +16,7 @@ cd /vagrant
 if [ -f Gemfile ]; then
 	echo "Doing bundle install..."
         if [ -f .ruby-gemset ]; then
-                GEMSET=`cat .gemset`
+                GEMSET=`cat .ruby-gemset`
                 rvm use $RUBY@$GEMSET --create
         fi
 	bundle install
